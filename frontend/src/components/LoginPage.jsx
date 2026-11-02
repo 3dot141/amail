@@ -264,7 +264,7 @@ export default function LoginPage() {
       <main className="login-form">
         <div style={{ width: '100%', maxWidth: 380 }}>
         {/* Card */}
-        <div style={{
+        <div className="login-card" style={{
           background: 'var(--bg-secondary)', border: '1px solid var(--border)',
           borderRadius: 16, padding: 32,
         }}>
