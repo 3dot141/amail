@@ -2,6 +2,9 @@
 // Reads the *effective* accent hex (theme value, or a custom-CSS override of
 // --accent) so the SVG colour matches var(--accent) without relying on CSS
 // variable resolution inside SVG, and updates on theme AND custom-CSS changes.
+//
+// Flat mark with only a restrained top highlight and envelope shadow: no
+// gloss, bevels, or seam lines (those read as noise at sidebar size).
 import { useState, useEffect } from 'react';
 import { getEffectiveAccent, subscribeAccent } from '../themes.js';
 
@@ -24,54 +27,37 @@ export default function LogoMark({ size = 32 }) {
       style={{ flexShrink: 0 }}
     >
       <defs>
-        {/* Tonal overlay: white top-left → dark bottom-right for depth */}
-        <linearGradient id={`tonal_${id}`} x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%"   stopColor="rgba(255,255,255,0.22)"/>
-          <stop offset="100%" stopColor="rgba(0,0,0,0.28)"/>
-        </linearGradient>
-        {/* Top-gloss highlight */}
+        {/* Restrained top highlight — just enough to keep the tile from reading flat */}
         <linearGradient id={`sh_${id}`} x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%"   stopColor="rgba(255,255,255,0.14)"/>
+          <stop offset="0%"   stopColor="rgba(255,255,255,0.10)"/>
           <stop offset="100%" stopColor="rgba(255,255,255,0)"/>
         </linearGradient>
-        <clipPath id={`ec_${id}`}>
-          <rect x="5" y="10.5" width="22" height="15" rx="2.5"/>
-        </clipPath>
+        {/* Soft envelope shadow, no hard edge */}
+        <filter id={`es_${id}`} x="-30%" y="-30%" width="160%" height="180%">
+          <feDropShadow dx="0" dy="0.6" stdDeviation="0.7" floodColor="#000" floodOpacity="0.18"/>
+        </filter>
       </defs>
 
       {/* Background — accent hex passed directly, re-renders when theme changes */}
       <rect width="32" height="32" rx="7.5" fill={accent}/>
-      {/* Tonal gradient overlay for depth */}
-      <rect width="32" height="32" rx="7.5" fill={`url(#tonal_${id})`}/>
-      {/* Top-gloss highlight */}
-      <rect width="32" height="16" rx="7.5" fill={`url(#sh_${id})`}/>
+      <rect width="32" height="32" rx="7.5" fill={`url(#sh_${id})`}/>
 
-      {/* Envelope drop shadow */}
-      <rect x="5" y="11.5" width="22" height="15" rx="2.5" fill="rgba(0,0,0,0.18)"/>
-      {/* Envelope body */}
-      <rect x="5" y="10.5" width="22" height="15" rx="2.5" fill="white"/>
-
-      {/* Flap fold — subtle triangle shading */}
-      <path
-        d="M5,10.5 L16,20.5 L27,10.5 Z"
-        fill="rgba(0,0,0,0.08)"
-        clipPath={`url(#ec_${id})`}
+      {/* Envelope body, softened by a small drop shadow */}
+      <rect
+        x="10" y="11" width="15" height="10" rx="1.4"
+        fill="#ffffff" filter={`url(#es_${id})`}
       />
-      {/* Flap crease line */}
+      {/* Flap crease in the accent colour */}
       <path
-        d="M5,10.5 L16,20.5 L27,10.5"
-        fill="none"
-        stroke="rgba(0,0,0,0.28)"
-        strokeWidth="1.4"
-        strokeLinejoin="round"
-        clipPath={`url(#ec_${id})`}
+        d="M10.6 11.8 L17.5 16.1 L24.4 11.8"
+        fill="none" stroke={accent} strokeWidth="1.2" strokeLinejoin="round"
       />
 
-      {/* Bottom corner seam lines */}
-      {/* Masked so they stop at the envelope body bottom edge */}
-      <g clipPath={`url(#ec_${id})`}>
-        <line x1="5"  y1="25.5" x2="13" y2="20" stroke="rgba(0,0,0,0.14)" strokeWidth="1.1"/>
-        <line x1="27" y1="25.5" x2="19" y2="20" stroke="rgba(0,0,0,0.14)" strokeWidth="1.1"/>
+      {/* Three flow lines on the left */}
+      <g stroke="#ffffff" strokeWidth="1.2" strokeLinecap="round">
+        <line x1="6.4" y1="13.2" x2="8.4" y2="13.2"/>
+        <line x1="5.8" y1="16.1" x2="8.4" y2="16.1"/>
+        <line x1="6.4" y1="19.0" x2="8.4" y2="19.0"/>
       </g>
     </svg>
   );
