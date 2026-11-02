@@ -1,4 +1,4 @@
-// Images a reader loaded through MailFlow's image proxy, in the composer: a reply's or forward's
+// Images a reader loaded through AMail's image proxy, in the composer: a reply's or forward's
 // quoted email and a reopened draft keep the proxy URLs while they are on screen, so opening the
 // composer never loads an image from its sender, and what is sent or saved carries the email's
 // own references, which recipients and other mail clients can load.

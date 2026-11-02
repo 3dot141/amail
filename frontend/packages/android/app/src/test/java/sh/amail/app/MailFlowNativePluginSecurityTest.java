@@ -1,4 +1,4 @@
-package sh.mailflow.app;
+package sh.amail.app;
 
 import static org.junit.Assert.assertNull;
 

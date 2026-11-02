@@ -1,5 +1,5 @@
-// Email HTML placed in MailFlow's own page (the composer's quote, the div renderer) keeps images
-// only from MailFlow itself. The CSS escape cases depend on the browser's CSS parser and are checked
+// Email HTML placed in AMail's own page (the composer's quote, the div renderer) keeps images
+// only from AMail itself. The CSS escape cases depend on the browser's CSS parser and are checked
 // in Chromium, Firefox and WebKit; jsdom covers the URL handling and what must be kept.
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
@@ -27,7 +27,7 @@ describe('sanitizeEmailForApp', () => {
     assert.equal(out.querySelector('#v')?.hasAttribute('href') ?? false, false);
   });
 
-  it("keeps MailFlow's own images, data: and cid: images, and ordinary styling", () => {
+  it("keeps AMail's own images, data: and cid: images, and ordinary styling", () => {
     const out = parse(sanitizeEmailForApp('<img id="p" src="/api/mail/messages/1/image?u=abc"><img id="d" src="data:image/gif;base64,R0lGODlhAQABAAAAACw="><img id="c" src="cid:logo@x"><p id="t" style="color: red; font-weight: bold">Hi</p>'));
     assert.equal(out.querySelector('#p').getAttribute('src'), '/api/mail/messages/1/image?u=abc');
     assert.ok(out.querySelector('#d').getAttribute('src').startsWith('data:'));

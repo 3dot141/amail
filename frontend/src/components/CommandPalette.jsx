@@ -55,7 +55,7 @@ function buildActions({ t, openCompose, setSelectedAccount, setShowAdmin, setAdm
       label: t('commandPalette.actions.accountInbox', { name: a.name }),
       icon: a.icon
         ? <span style={{ fontSize: 15, lineHeight: 1, width: 15, display: 'inline-block', textAlign: 'center', flexShrink: 0 }}>{a.icon}</span>
-        : <span style={{ width: 15, height: 15, borderRadius: '50%', background: a.color || '#6366f1', display: 'inline-block', flexShrink: 0 }} />,
+        : <span style={{ width: 15, height: 15, borderRadius: '50%', background: a.color || '#0868F7', display: 'inline-block', flexShrink: 0 }} />,
       run: () => setSelectedAccount(a.id, 'INBOX'),
     });
   }

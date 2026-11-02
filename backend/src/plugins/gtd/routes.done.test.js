@@ -423,7 +423,7 @@ describe('POST /api/gtd/done — a GTD folder holding the only copy', () => {
     expect(imapManager.moveMessage).toHaveBeenCalledWith(expect.anything(), 10, 'Watch', 'Archive');
   });
 
-  // Gmail: removing a GTD label leaves the message in All Mail, which MailFlow does not sync.
+  // Gmail: removing a GTD label leaves the message in All Mail, which AMail does not sync.
   it('strips as before on Gmail, where the message stays in All Mail', async () => {
     stubQueries({ inbox: null, copies: ['Watch'] });
     imapManager.isLabelStore.mockReturnValue(true);

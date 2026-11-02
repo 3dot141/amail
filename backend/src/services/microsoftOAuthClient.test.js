@@ -12,7 +12,7 @@ const shared = { clientId: 'builtin-app-id', tenantId: 'consumers', builtin: tru
 const own = (tenantId) => ({ clientId: 'own-app-id', tenantId, builtin: false });
 
 // Which app a new device-code sign-in uses, by the kind of account (#674): personal accounts
-// fall back to MailFlow's shared app when the instance's own app cannot sign them in.
+// fall back to AMail's shared app when the instance's own app cannot sign them in.
 describe('getMsDeviceClient(kind)', () => {
   it.each([
     // [own app tenant (undefined: no own app), shared app on, personal client, work client]

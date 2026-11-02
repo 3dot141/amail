@@ -1078,7 +1078,7 @@ describe('dark email bodies', () => {
     assert.equal(toggle().getAttribute('aria-label'), 'message.showOriginal');
   });
 
-  test('HTML without its own dark design can be shown dark too: MailFlow recolors it', async () => {
+  test('HTML without its own dark design can be shown dark too: AMail recolors it', async () => {
     await open('dark-html-plain', { html: '<p>plain html</p>', text: '' });
     assert.equal(toggle().getAttribute('aria-label'), 'message.showDark');
     await click(toggle());

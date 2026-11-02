@@ -28,7 +28,7 @@ export function openScheduledView(store, id = null) {
 }
 
 // A v4 UUID for the create's clientKey, which the server requires to be one. crypto.randomUUID
-// needs a secure context, and MailFlow also runs over plain HTTP on a LAN; getRandomValues does not.
+// needs a secure context, and AMail also runs over plain HTTP on a LAN; getRandomValues does not.
 export function newClientKey(cryptoApi = globalThis.crypto) {
   if (typeof cryptoApi?.randomUUID === 'function') return cryptoApi.randomUUID();
   const b = cryptoApi.getRandomValues(new Uint8Array(16));

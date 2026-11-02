@@ -201,7 +201,7 @@ async function processMicrosoftTokens(userId, tokens, { tenantId, clientId, publ
       // For multi-tenant configs the issuer check is skipped above, so validate that
       // the iss claim matches the token's own tid.  This prevents cross-tenant identity
       // injection where an attacker creates a Microsoft tenant with the victim's email,
-      // obtains a JWT signed by Microsoft, and submits it to a MailFlow instance
+      // obtains a JWT signed by Microsoft, and submits it to a AMail instance
       // configured for 'common'.
       if (fixedTenants.has(tenantId) && payload.tid && payload.iss) {
         const expectedIss = `https://login.microsoftonline.com/${payload.tid}/v2.0`;
@@ -347,7 +347,7 @@ router.post('/microsoft/device', async (req, res) => {
   let repair;
   try { repair = await repairTarget(req.session.userId, req.body?.accountId, 'microsoft'); }
   catch (err) { return res.status(err.status || 500).json({ error: err.message }); }
-  // The instance's own app when configured, else MailFlow's built-in public client (#674).
+  // The instance's own app when configured, else AMail's built-in public client (#674).
   const kind = DEVICE_KINDS.has(req.body?.kind) ? req.body.kind : undefined;
   const client = repair ? msRepairClient(repair) : getMsDeviceClient(kind);
   if (!client) {

@@ -234,7 +234,7 @@ export default function MailApp() {
 
   // Push a history entry when an email is opened on mobile so that the browser's
   // native back gesture (iOS swipe, Android back button) pops an in-app state
-  // instead of leaving MailFlow entirely.
+  // instead of leaving AMail entirely.
   const prevMessageIdRef = useRef(selectedMessageId);
   const selectedMessageIdRef = useRef(selectedMessageId);
   useEffect(() => { selectedMessageIdRef.current = selectedMessageId; }, [selectedMessageId]);
@@ -489,7 +489,7 @@ export default function MailApp() {
     const tabCount = selectedAccountId
       ? (unreadCounts.byAccount[selectedAccountId] ?? 0)
       : total;
-    document.title = 'MailFlow';
+    document.title = 'AMail';
     updateFaviconBadge(showFaviconBadge ? tabCount : 0);
     // App-icon badge always reflects total unread across all accounts so that
     // selecting a zero-unread account never clears the home screen badge.

@@ -61,7 +61,7 @@ const replySender = message => Object.hasOwn(message, 'reply_from_email')
   : { email: message.from_email, name: message.from_name || '' };
 
 // A copy in the account's Sent folder is the user's own, even when it went out from a "Send as" or
-// delegated address that MailFlow doesn't list as an alias. `folders` is the store's folder lists by
+// delegated address that AMail doesn't list as an alias. `folders` is the store's folder lists by
 // account; the store isn't imported here, as backend tests load this file without the frontend's packages.
 const SENT_NAMES = /^(?:\[gmail\]\/|\[google mail\]\/)?sent(?:\s+(?:items|mail|messages))?$/i;
 function isSentCopy(message, account, folders) {
@@ -131,7 +131,7 @@ export async function openReplyFromMessage(message, { accounts, folders, openCom
   const quotedText = replyBody?.text
     ? `\n\n---\nOn ${replyDate}, ${replyFromStr} wrote:\n${replyBody.text.split('\n').map(l => '> ' + l).join('\n')}`
     : '';
-  // Quoted as shown, images through MailFlow's proxy, so opening the composer never loads them
+  // Quoted as shown, images through AMail's proxy, so opening the composer never loads them
   // from the sender; ComposeModal puts the email's own references back when it saves or sends.
   const quotedBodyHtml = replyBody?.html
     ? `<div style="border-left:3px solid var(--border,#ccc);padding-left:12px;margin-top:12px;color:var(--text-secondary,#666)"><p style="margin:0 0 6px;font-size:12px">On ${escapeHtml(replyDate)}, ${escapeHtml(replyFromStr)} wrote:</p>${replyBody.html}</div>`

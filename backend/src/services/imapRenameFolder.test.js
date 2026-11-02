@@ -5,7 +5,7 @@
 // (RFC 3501 6.4.2). Pooled sessions keep whatever mailbox they last selected, so the rename
 // often runs on a session that still holds the folder. Messages another client only flagged
 // (Thunderbird's "Just mark it as deleted", Roundcube's flag_for_deletion) are ordinary rows
-// in MailFlow, and that CLOSE would silently delete them.
+// in AMail, and that CLOSE would silently delete them.
 //
 // The fake connection below hands RENAME and CLOSE to imapflow's own commands, so these tests
 // exercise them as imapflow ships them. Everything under those commands is a small in-memory

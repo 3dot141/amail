@@ -63,7 +63,7 @@ function scanPaired(str, openNameRe, closeLiteral, transform) {
 // <a href="javascript:…">, <form>, <base>) reached the body as markup. Sealing turns any `</style`
 // left in the text into `<\/style`, the same characters to CSS and no end tag to the HTML parser.
 // An opening `<style` is escaped the same way (`<\style`), so text in an email's own CSS can never
-// pass for the dark-scheme block MailFlow appends after it (DARK_STYLE_OPEN, splitDarkScheme).
+// pass for the dark-scheme block AMail appends after it (DARK_STYLE_OPEN, splitDarkScheme).
 export function sealStyleText(css) {
   return css.replace(/<(\/?)(style)/gi, '<\\$1$2');
 }
@@ -401,7 +401,7 @@ export function splitDarkScheme(stored) {
   return { html, darkCss: lightOnly ? null : darkCss, lightOnly };
 }
 
-// The stored body as an email again, for HTML that leaves MailFlow straight from the server.
+// The stored body as an email again, for HTML that leaves AMail straight from the server.
 export const withoutDarkScheme = (stored) => splitDarkScheme(stored).html;
 
 function stripDarkModeStyleBlocks(html, { lightOnly = false } = {}) {
@@ -1083,7 +1083,7 @@ function rewriteRemoteImageRefs(html, replace) {
 }
 
 // Open-tracking images. The image proxy hides the reader's address, but fetching a tracking pixel
-// still tells the sender the email was opened, so MailFlow does not fetch these at all: an <img>
+// still tells the sender the email was opened, so AMail does not fetch these at all: an <img>
 // the email itself sizes at 2x2 px or less (width and height, as attributes or inline style), and
 // the open-tracking addresses of the common sending platforms. Images hidden with display:none are
 // not counted: senders hide a dark-mode logo that way.
@@ -1168,7 +1168,7 @@ const trackerTest = (html) => {
 // What a blocked tracker becomes: an image that draws nothing, so the layout stays as sent.
 export const TRACKER_REPLACEMENT = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
-// Remote images loaded through MailFlow's image proxy: every remote image reference in sanitized
+// Remote images loaded through AMail's image proxy: every remote image reference in sanitized
 // HTML becomes `toProxy(raw)` (routes/mail.js imageProxyPath), which carries the reference as it
 // was written, so the original can be restored exactly (the frontend's utils/imageProxy.js does,
 // for replies and forwards). Open-tracking images are not loaded: they become

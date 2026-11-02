@@ -1,4 +1,4 @@
-// Which attachments open in MailFlow's own viewer instead of downloading, and the byte check that
+// Which attachments open in AMail's own viewer instead of downloading, and the byte check that
 // decides what the viewer shows once the file arrives.
 //
 // Only PDFs and common raster images qualify, and only when the risk classifier rates the file

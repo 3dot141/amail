@@ -1,6 +1,6 @@
 {
-  "name": "mailflow-frontend",
-  "productName": "MailFlow",
+  "name": "amail-frontend",
+  "productName": "AMail",
   "desktopName": "MailFlow",
   "version": "4.1.2",
   "description": "A self-hosted, unified webmail client.",
@@ -41,9 +41,9 @@
     "android:dist": "npm run android:sync && node packages/scripts/build-android.cjs && node packages/scripts/collect-android-artifacts.cjs"
   },
   "build": {
-    "appId": "sh.mailflow.app",
-    "productName": "MailFlow",
-    "executableName": "MailFlow",
+    "appId": "sh.amail.app",
+    "productName": "AMail",
+    "executableName": "AMail",
     "directories": {
       "output": "packages/release",
       "buildResources": "packages/electron/icons"
@@ -51,7 +51,7 @@
     "icon": "icon",
     "protocols": [
       {
-        "name": "MailFlow email link",
+        "name": "AMail email link",
         "schemes": [
           "mailto"
         ]

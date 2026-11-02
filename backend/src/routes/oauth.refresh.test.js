@@ -5,7 +5,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 vi.mock('../index.js', () => ({ imapManager: {} }));
 vi.mock('../services/db.js', () => ({ query: vi.fn(), withTransaction: vi.fn() }));
 vi.mock('../services/encryption.js', () => ({ encrypt: (v) => v, decrypt: (v) => v }));
-// A stand-in for MailFlow's built-in Microsoft app (#674), so no test depends on the shipped ID.
+// A stand-in for AMail's built-in Microsoft app (#674), so no test depends on the shipped ID.
 vi.mock('../services/microsoftBuiltinApp.js', () => ({ MAILFLOW_MS_CLIENT_ID: 'builtin-app-id' }));
 
 const { query } = await import('../services/db.js');

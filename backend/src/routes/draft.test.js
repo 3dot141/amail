@@ -61,7 +61,7 @@ describe('POST /api/mail/draft — local row persistence', () => {
         accountId: ACCOUNT_ID,
         to: ['Mike Scanlan <mike@scanlan.ai>'],
         cc: [],
-        subject: 'Re: MailFlow hero',
+        subject: 'Re: AMail hero',
         body: 'hello mike',
         bodyIsHtml: false,
       }),
@@ -75,7 +75,7 @@ describe('POST /api/mail/draft — local row persistence', () => {
     expect(folder).toBe('Drafts');
     expect(uid).toBe(5);
     expect(meta.to).toEqual([{ name: 'Mike Scanlan', email: 'mike@scanlan.ai' }]);
-    expect(meta.subject).toBe('Re: MailFlow hero');
+    expect(meta.subject).toBe('Re: AMail hero');
     expect(meta.fromEmail).toBe('matthias@mailflow.sh');
     expect(meta.bodyHtml).toContain('hello mike');
     expect(meta.bodyText).toContain('hello mike');

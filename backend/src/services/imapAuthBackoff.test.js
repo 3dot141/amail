@@ -1,6 +1,6 @@
 // Backing off when the server rejects the credentials.
 //
-// A wrong password does not fix itself, but MailFlow retried one every 92 seconds: a dev
+// A wrong password does not fix itself, but AMail retried one every 92 seconds: a dev
 // Yahoo account logged 627 failed logins in 16 hours. The refusal ladder tops out at 15
 // minutes, which is right for a provider that is merely busy and far too eager for one
 // that is telling us the password is wrong. That is how a client gets an account locked

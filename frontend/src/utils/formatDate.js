@@ -2,8 +2,8 @@ import i18next from 'i18next';
 import { isToday, isTomorrow, isYesterday, isThisYear } from 'date-fns';
 import { htmlLang } from './browserLanguage.js';
 
-// Dates are written in MailFlow's language, not the browser's (#593): with Russian chosen in
-// MailFlow and an English browser, month names, AM/PM and "Yesterday" used to stay English. The
+// Dates are written in AMail's language, not the browser's (#593): with Russian chosen in
+// AMail and an English browser, month names, AM/PM and "Yesterday" used to stay English. The
 // time zone and the calendar day stay the browser's own. The language is read from the shared
 // i18next instance (src/i18n.js), so these work wherever they are called from.
 export function appLocale() {

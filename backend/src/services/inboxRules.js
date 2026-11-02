@@ -451,7 +451,7 @@ async function applyAction(action, msg, account, imapManager, ruleId, resolverCa
     }
 
     case 'set_category': {
-      // A MailFlow-side label, no IMAP call. Rules run after the ingest classifier, so the rule's
+      // A AMail-side label, no IMAP call. Rules run after the ingest classifier, so the rule's
       // category wins, and it is stored as chosen ('primary' included) so Recategorize and a
       // re-sync leave it alone (#489). Not a destination: the message stays where it is.
       if (!RULE_CATEGORIES.has(action.value)) return false;

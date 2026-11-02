@@ -1,6 +1,6 @@
 // Which Microsoft Entra app a Microsoft account signs in and refreshes through (#674).
 //
-// MailFlow ships a registered public client so personal Outlook.com, Hotmail, Live and MSN
+// AMail ships a registered public client so personal Outlook.com, Hotmail, Live and MSN
 // accounts can connect over the device-code flow without the admin registering an app
 // first. It has no secret and no redirect URI, so it only ever serves the device-code flow,
 // and it signs in through the consumers tenant: work and school accounts still need the
@@ -43,7 +43,7 @@ const builtinClient = () => ({ clientId: MAILFLOW_MS_CLIENT_ID, tenantId: MS_BUI
 
 // Client for a new device-code sign-in, by the kind of account being added (#674):
 //   'personal'  the instance's own app when its tenant admits personal accounts (common or
-//               consumers), else MailFlow's built-in app unless the admin opted out
+//               consumers), else AMail's built-in app unless the admin opted out
 //   'work'      the instance's own app, unless it is limited to personal accounts
 //   omitted     as before kinds existed: the own app when configured, else the built-in one
 // Null when nothing can sign that kind of account in.
@@ -60,7 +60,7 @@ export function getMsDeviceClient(kind) {
 }
 
 // How a personal Microsoft account signs in now: 'own' (the instance's app admits personal
-// accounts), 'shared' (MailFlow's built-in app), or null when it cannot.
+// accounts), 'shared' (AMail's built-in app), or null when it cannot.
 export function msPersonalSignInVia() {
   const client = getMsDeviceClient('personal');
   if (!client) return null;

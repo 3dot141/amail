@@ -41,7 +41,7 @@ export function existingHiddenPaths(hiddenPaths, folders) {
   return hiddenPaths.filter(path => present.has(path));
 }
 
-// The hidden paths after MailFlow itself renames a folder (its subfolders move with it, as IMAP
+// The hidden paths after AMail itself renames a folder (its subfolders move with it, as IMAP
 // RENAME moves them) or deletes one (newPath null: only that folder goes, as with IMAP DELETE).
 export function moveHiddenPaths(hiddenPaths, oldPath, newPath, folders = []) {
   if (!Array.isArray(hiddenPaths)) return [];

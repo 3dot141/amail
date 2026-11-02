@@ -15,7 +15,7 @@ const parseList = (raw) => {
 const fmtAddr = (r) => r.name ? `${esc(r.name)} &lt;${esc(r.email)}&gt;` : esc(r.email);
 
 // The print window loads remote images as the email frame does (utils/remoteImagePolicy.js): none
-// when a printed body was served blocked, through MailFlow's image proxy alone when proxied. Any
+// when a printed body was served blocked, through AMail's image proxy alone when proxied. Any
 // one blocked message of a conversation is enough to load none, rather than a blocked one loading
 // them.
 const HEAD = (title, remoteBlocked = false, remoteProxied = false) => `<!DOCTYPE html><html><head><meta charset="utf-8"><meta http-equiv="Content-Security-Policy" content="script-src 'none'; object-src 'none'; base-uri 'none';${remoteLoadsCsp(remoteBlocked, remoteProxied)}"><title>${esc(title)}</title>`;

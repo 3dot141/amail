@@ -27,7 +27,7 @@ const UPDATE_RELEASE_URL = 'https://api.github.com/repos/maathimself/mailflow/re
 const UPDATE_RELEASE_URL = 'https://api.github.com/repos/dcoffin88/mailflow/releases/latest';
 */
 
-const UPDATE_ERROR_MESSAGE = 'Could not check for MailFlow updates. Please visit the website instead.';
+const UPDATE_ERROR_MESSAGE = 'Could not check for AMail updates. Please visit the website instead.';
 const NATIVE_ACTION_CHANNEL = 'mailflow:native-action';
 const NATIVE_ACTION_ARG = '--mailflow-action=';
 const NEW_MAIL_NOTIFICATION_MAX_LENGTH = 240;
@@ -39,7 +39,7 @@ const REWRITE_ERROR_PATTERNS = [
 ];
 const HOST_UNAVAILABLE_STATUS_CODES = new Set([404, 502, 503, 504]);
 const LINUX_BADGE_DESKTOP_IDS = [
-  'MailFlow.desktop',
+  'AMail.desktop',
   'mailflow.desktop',
   'sh.mailflow.app.desktop',
   'mailflow-frontend.desktop',
@@ -65,12 +65,12 @@ function isAllowedExternalUrl(url) {
 const pendingNativeActions = new Map();
 const pendingProtocolUrls = [];
 
-app.setName('MailFlow');
+app.setName('AMail');
 if (process.platform === 'win32') {
-  app.setAppUserModelId('sh.mailflow.app');
+  app.setAppUserModelId('sh.amail.app');
 }
 if (process.platform === 'linux' && typeof app.setDesktopName === 'function') {
-  app.setDesktopName('MailFlow.desktop');
+  app.setDesktopName('AMail.desktop');
 }
 
 if (process.platform === 'linux' && process.env.APPIMAGE) {
@@ -108,15 +108,15 @@ function registerWindowsMailtoCapabilities() {
     const exePath = process.execPath;
     const command = `"${exePath}" "%1"`;
 
-    writeCurrentUserRegValue('HKCU\\Software\\RegisteredApplications', 'MailFlow', 'Software\\Clients\\Mail\\MailFlow\\Capabilities');
-    writeCurrentUserRegValue('HKCU\\Software\\Clients\\Mail\\MailFlow', '', 'MailFlow');
-    writeCurrentUserRegValue('HKCU\\Software\\Clients\\Mail\\MailFlow\\Capabilities', 'ApplicationName', 'MailFlow');
-    writeCurrentUserRegValue('HKCU\\Software\\Clients\\Mail\\MailFlow\\Capabilities', 'ApplicationDescription', 'A self-hosted, unified webmail client.');
-    writeCurrentUserRegValue('HKCU\\Software\\Clients\\Mail\\MailFlow\\Capabilities\\URLAssociations', 'mailto', 'MailFlow.mailto');
-    writeCurrentUserRegValue('HKCU\\Software\\Classes\\MailFlow.mailto', '', 'URL:MailFlow MailTo Protocol');
-    writeCurrentUserRegValue('HKCU\\Software\\Classes\\MailFlow.mailto', 'URL Protocol', '');
-    writeCurrentUserRegValue('HKCU\\Software\\Classes\\MailFlow.mailto\\DefaultIcon', '', `${exePath},0`);
-    writeCurrentUserRegValue('HKCU\\Software\\Classes\\MailFlow.mailto\\shell\\open\\command', '', command);
+    writeCurrentUserRegValue('HKCU\\Software\\RegisteredApplications', 'AMail', 'Software\\Clients\\Mail\\AMail\\Capabilities');
+    writeCurrentUserRegValue('HKCU\\Software\\Clients\\Mail\\AMail', '' , 'AMail');
+    writeCurrentUserRegValue('HKCU\\Software\\Clients\\Mail\\AMail\\Capabilities', 'ApplicationName', 'AMail');
+    writeCurrentUserRegValue('HKCU\\Software\\Clients\\Mail\\AMail\\Capabilities', 'ApplicationDescription', 'A self-hosted, unified webmail client.');
+    writeCurrentUserRegValue('HKCU\\Software\\Clients\\Mail\\AMail\\Capabilities\\URLAssociations', 'mailto', 'AMail.mailto');
+    writeCurrentUserRegValue('HKCU\\Software\\Classes\\AMail.mailto', '', 'URL:AMail MailTo Protocol');
+    writeCurrentUserRegValue('HKCU\\Software\\Classes\\AMail.mailto', 'URL Protocol', '');
+    writeCurrentUserRegValue('HKCU\\Software\\Classes\\AMail.mailto\\DefaultIcon', '', `${exePath},0`);
+    writeCurrentUserRegValue('HKCU\\Software\\Classes\\AMail.mailto\\shell\\open\\command', '', command);
 
     return true;
   } catch (error) {
@@ -178,7 +178,7 @@ function requestJson(url) {
     const request = https.get(url, {
       headers: {
         Accept: 'application/vnd.github+json',
-        'User-Agent': `MailFlow/${app.getVersion()}`,
+        'User-Agent': `AMail/${app.getVersion()}`,
       },
     }, (response) => {
       if (response.statusCode >= 300 && response.statusCode < 400 && response.headers.location) {
@@ -662,7 +662,7 @@ function notifyCheckingUpdate(verbose) {
   sendUpdateStatus({ type: 'checking' });
   notifyUpdateStatus({
     title: 'Checking for update',
-    message: 'Checking for new MailFlow updates.',
+    message: 'Checking for new AMail updates.',
   });
 }
 
@@ -681,7 +681,7 @@ function notifyUpToDate(verbose) {
   sendUpdateStatus({ type: 'up-to-date' });
   notifyUpdateStatus({
     title: 'Up to date',
-    message: 'Your version of MailFlow is up to date.',
+    message: 'Your version of AMail is up to date.',
     type: 'positive',
   });
 }
@@ -715,7 +715,7 @@ function notifyUpdateAvailable(verbose = true, { autoDownload = true } = {}) {
     if (verbose || releaseVersion !== lastNotifiedManualUpdateVersion) {
       showInAppNotification({
         title: 'Update Available',
-        message: 'A new version of MailFlow is available.',
+        message: 'A new version of AMail is available.',
         type: 'info',
         actionLabel: 'View Release',
         action: 'open-update-release',
@@ -734,7 +734,7 @@ function notifyUpdateAvailable(verbose = true, { autoDownload = true } = {}) {
 
   notifyUpdateStatus({
     title: 'Update Available',
-    message: 'MailFlow is downloading the newest version for you.',
+    message: 'AMail is downloading the newest version for you.',
   });
 }
 
@@ -742,7 +742,7 @@ function notifyUpdateDownloaded() {
   const linuxInstallCommand = getLinuxUpdateInstallCommand(downloadedUpdate);
   const isLinuxManualInstall = Boolean(linuxInstallCommand);
   const linuxInstallMessage = linuxInstallCommand
-    ? `MailFlow downloaded and verified the update. Install it from a terminal with:\n${linuxInstallCommand}`
+    ? `AMail downloaded and verified the update. Install it from a terminal with:\n${linuxInstallCommand}`
     : null;
 
   sendUpdateStatus({
@@ -760,7 +760,7 @@ function notifyUpdateDownloaded() {
   });
   showInAppNotification({
     title: 'Update Ready',
-    message: linuxInstallMessage || 'MailFlow downloaded the update.',
+    message: linuxInstallMessage || 'AMail downloaded the update.',
     type: 'positive',
     actionLabel: isLinuxManualInstall ? 'Copy & Quit' : 'Install',
     action: isLinuxManualInstall ? 'copy-update-command-and-quit' : 'install-update',
@@ -898,7 +898,7 @@ function verifyPlatformSignature(filePath) {
     const installed = readWindowsSignature(process.execPath);
     const downloaded = readWindowsSignature(filePath);
     if (!hasMatchingWindowsPublisher(installed, downloaded)) {
-      throw new Error('The update is not signed by the installed MailFlow publisher.');
+      throw new Error('The update is not signed by the installed AMail publisher.');
     }
     return;
   }
@@ -917,7 +917,7 @@ function verifyPlatformSignature(filePath) {
     const installed = readMacSignatureDetails(process.execPath);
     const downloaded = readMacSignatureDetails(filePath);
     if (!hasMatchingMacTeam(installed, downloaded)) {
-      throw new Error('The update is not signed by the installed MailFlow team.');
+      throw new Error('The update is not signed by the installed AMail team.');
     }
   }
 }
@@ -1044,7 +1044,7 @@ async function checkForUpdates(verbose = false) {
     }
 
     if (!asset) {
-      notifyUpdateError('A MailFlow update is available, but no installer was found for this platform.');
+      notifyUpdateError('An AMail update is available, but no installer was found for this platform.');
       return { updateAvailable: true, downloadAvailable: false };
     }
 
@@ -1142,7 +1142,7 @@ function installDownloadedUpdate() {
 
         console.error('Could not launch downloaded update:', launchError);
         shell.showItemInFolder(downloadedUpdate);
-        notifyUpdateError('The update was downloaded, but MailFlow could not start the installer.');
+        notifyUpdateError('The update was downloaded, but AMail could not start the installer.');
         resolve({ installed: false, reason: 'launch-failed', error: launchError.message });
       }
     });

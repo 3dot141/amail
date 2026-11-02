@@ -12,7 +12,7 @@ vi.mock('../index.js', () => ({ imapManager: mocks.imapManager }));
 vi.mock('../services/db.js', () => ({ query: vi.fn(), withTransaction: mocks.withTransaction }));
 vi.mock('../services/encryption.js', () => ({ encrypt: (v) => v, decrypt: (v) => v }));
 vi.mock('jose', () => ({ createRemoteJWKSet: vi.fn(() => ({})), jwtVerify: mocks.jwtVerify }));
-// A stand-in for MailFlow's registered app, so the tests never depend on the shipped ID.
+// A stand-in for AMail's registered app, so the tests never depend on the shipped ID.
 vi.mock('../services/microsoftBuiltinApp.js', () => ({ MAILFLOW_MS_CLIENT_ID: FAKE_BUILTIN_ID }));
 
 import express from 'express';
@@ -29,7 +29,7 @@ function buildApp() {
 }
 
 // The device-code sign-in for personal Microsoft accounts (#674): with no app of the
-// instance's own it runs through MailFlow's built-in public client, and the account
+// instance's own it runs through AMail's built-in public client, and the account
 // records which client and tenant it was connected with.
 describe('Microsoft device-code flow client', () => {
   let server;

@@ -6,7 +6,7 @@ let pluginUnavailable = false;
 
 function getPlugin() {
   if (plugin) return plugin;
-  plugin = registerNativePlugin('MailFlowNative');
+  plugin = registerNativePlugin('AMailNative');
   return plugin;
 }
 
@@ -14,8 +14,8 @@ async function callNative(method, args, fallback = null) {
   if (pluginUnavailable) return fallback;
 
   try {
-    const MailFlowNative = getPlugin();
-    return await MailFlowNative[method](args);
+    const AMailNative = getPlugin();
+    return await AMailNative[method](args);
   } catch (error) {
     if (method !== 'openOidcLogout' && String(error?.message || error).includes('not implemented')) {
       pluginUnavailable = true;
@@ -62,8 +62,8 @@ export async function installCapacitorNativeBridge() {
         openDownload: async () => callNative('openDownloadedUpdate'),
         onStatus: (callback) => {
           if (pluginUnavailable) return () => {};
-          const MailFlowNative = getPlugin();
-          const handlePromise = MailFlowNative.addListener('updateStatus', callback).catch(() => null);
+          const AMailNative = getPlugin();
+          const handlePromise = AMailNative.addListener('updateStatus', callback).catch(() => null);
           return () => {
             handlePromise.then((handle) => handle?.remove?.()).catch(() => {});
           };
@@ -91,8 +91,8 @@ export async function installCapacitorNativeBridge() {
         ack: async (id) => callNative('ackAction', { id }),
         onAction: (callback) => {
           if (pluginUnavailable) return () => {};
-          const MailFlowNative = getPlugin();
-          const handlePromise = MailFlowNative.addListener('nativeAction', callback).catch(() => null);
+          const AMailNative = getPlugin();
+          const handlePromise = AMailNative.addListener('nativeAction', callback).catch(() => null);
           return () => {
             handlePromise.then((handle) => handle?.remove?.()).catch(() => {});
           };

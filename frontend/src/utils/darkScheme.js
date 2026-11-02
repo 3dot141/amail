@@ -5,11 +5,11 @@
 // (backend emailSanitizer.js splitDarkScheme). The HTML itself is the sanitized email, so replies,
 // forwards and print reuse it as it is.
 //
-// Plain text is drawn by MailFlow itself, in the theme's colors. HTML is shown dark in its frame
+// Plain text is drawn by AMail itself, in the theme's colors. HTML is shown dark in its frame
 // (utils/darkBody.js): with the sender's own dark design when it has one, otherwise recolored, and
 // left as sent whenever either would make text unreadable. A sender that asks to stay light
 // (color-scheme: only light) is recolored like any other: senders mark every email that way to
-// stop Apple Mail's blunt inversion (Intercom's template does), which MailFlow's recoloring, with
+// stop Apple Mail's blunt inversion (Intercom's template does), which AMail's recoloring, with
 // its readability check, is not. Gmail and Outlook darken them too. The reader can still switch
 // one back to its original colors.
 import { THEMES, resolveEffectiveTheme } from '../themes.js';

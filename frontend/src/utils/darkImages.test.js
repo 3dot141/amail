@@ -1,4 +1,4 @@
-// Images in an email body shown dark (#228): which images are MailFlow's placeholders, which can be
+// Images in an email body shown dark (#228): which images are AMail's placeholders, which can be
 // read, and which need a light backing. Reading pixels needs a real canvas and is checked in
 // Chromium by the dark-mode audit harness's self-test.
 import { test, describe } from 'node:test';

@@ -63,7 +63,7 @@ function stateMessage(status) {
 const CONFIRM = {
   uncertain: {
     code: 'confirm_uncertain',
-    error: 'This message may already have been delivered: MailFlow stopped while sending it. Check the Sent folder first. Send it again anyway?',
+    error: 'This message may already have been delivered: AMail stopped while sending it. Check the Sent folder first. Send it again anyway?',
   },
   restored: {
     code: 'confirm_restored',
@@ -215,7 +215,7 @@ const bytesOf = (payload, attachments) => Buffer.byteLength(JSON.stringify(paylo
   + attachments.reduce((sum, a) => sum + a.content.length, 0);
 
 // What the row says the server answered, for its owner: the mail server's own reply line when it
-// gave one (a refusal, a deferral, a failed sign-in); otherwise MailFlow's explanation, except the
+// gave one (a refusal, a deferral, a failed sign-in); otherwise AMail's explanation, except the
 // catch-all "Please try again", which says nothing, and which an uncertain message must never say:
 // it may have been delivered, and must not be sent again blindly. A pause (overdue, account off)
 // has no detail.

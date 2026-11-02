@@ -21,7 +21,7 @@ export default function MicrosoftSignIn({ mode, status, onSignedIn, onDone, onCa
   const [deviceStatus, setDeviceStatus] = useState(null);
   // Once there is an outcome, the Outlook.com note would only repeat it.
   const finished = ['done', 'lost'].includes(deviceStatus) || !!redirect?.result;
-  // Which app signs personal accounts in: MailFlow's shared one shows Microsoft's unverified notice.
+  // Which app signs personal accounts in: AMail's shared one shows Microsoft's unverified notice.
   const sharedApp = mode === 'personal' && status?.personalVia === 'shared';
 
   useEffect(() => {

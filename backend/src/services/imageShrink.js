@@ -1,11 +1,11 @@
 // Images through the image proxy (services/imageProxy.js), fitted to how the email shows them. An
 // email's photo can be several megabytes at thousands of pixels wide, shown at a few hundred, and a
-// product shot 600 px wide is often shown at 180. Proxied, every byte crosses the MailFlow server's
+// product shot 600 px wide is often shown at 180. Proxied, every byte crosses the AMail server's
 // own connection, often a home server's upload, and then the reader's, often a phone's. So an
 // image wider than twice the width the email gives it (the proxy URL carries that width; without
 // one, twice a usual 600 px email column) is scaled to that, and one that is merely heavy is
 // re-encoded, both as WebP, which also drops their metadata and means the browser decodes
-// MailFlow's encoding, not the sender's file. A newsletter measured at 1.28 MB came to 455 KB.
+// AMail's encoding, not the sender's file. A newsletter measured at 1.28 MB came to 455 KB.
 //
 // Everything else passes through byte for byte: small images already their shown size, GIFs,
 // animated images (their frames would be lost), and anything sharp cannot read or does not make

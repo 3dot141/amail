@@ -190,7 +190,7 @@ describe('GET /messages/:id/body and bodies fetched before images showed (#640)'
       expect(imapManager.fetchMessageBody).toHaveBeenCalledTimes(1);
       expect(state.body_html === null || state.body_html.includes(CIDS_SETTLED)).toBe(true);
     }
-    // One stored empty by an earlier MailFlow is not fetched at all.
+    // One stored empty by an earlier AMail is not fetched at all.
     imapManager.fetchMessageBody.mockReset();
     const { view } = table('');
     await view();

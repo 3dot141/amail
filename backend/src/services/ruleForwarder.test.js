@@ -106,7 +106,7 @@ describe('buildForwardMessage', () => {
     expect(mail.html).toContain('<p>HTML body</p>');
     // Same software declaration as composed mail (#492): a forward leaves through the same
     // strict outbound filters that treat header-less mail as a botnet signature.
-    expect(mail.xMailer).toMatch(/^MailFlow \d+\.\d+\.\d+$/);
+    expect(mail.xMailer).toMatch(/^AMail \d+\.\d+\.\d+$/);
   });
 
   it('does not add a second Fwd prefix', () => {
@@ -152,8 +152,8 @@ describe('buildForwardMessage', () => {
     expect(mail.text).toContain('Second line');
   });
 
-  // #228: the sanitizer keeps a sender's dark CSS for MailFlow's reader, switched off. A forward
-  // leaves MailFlow, where a mail client ignoring media="not all" would apply it on a light page.
+  // #228: the sanitizer keeps a sender's dark CSS for AMail's reader, switched off. A forward
+  // leaves AMail, where a mail client ignoring media="not all" would apply it on a light page.
   it("leaves the sender's switched-off dark CSS out of a forward", () => {
     const mail = buildForwardMessage({
       row: { subject: 'Styled', from_name: 'S', from_email: 'sender@example.com', to_addresses: [], cc_addresses: [], date: null },
@@ -199,7 +199,7 @@ describe('buildForwardMessage', () => {
         account,
         recipient: 'recipient@example.com',
         text: 'Plain body',
-      }).headers['X-MailFlow-Loop'];
+      }).headers['X-AMail-Loop'];
     };
     const token = await tokenUnder(KEY);
 
@@ -823,7 +823,7 @@ describe('forwardRuleMessage', () => {
       message: {
         id: 'message-2',
         parsedHeaders: parseRawHeaders(
-          `X-MailFlow-Loop: ${[...added, fromAddress, 'mailbox@example.com'].join(', ')}`
+          `X-AMail-Loop: ${[...added, fromAddress, 'mailbox@example.com'].join(', ')}`
         ),
       },
     })).resolves.toBe('sent');

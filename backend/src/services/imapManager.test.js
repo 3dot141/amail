@@ -2107,7 +2107,7 @@ describe('inline images the body never shows are listed as attachments', () => {
       expect(body.attachments.map(a => a.filename)).toEqual(['big.png']);
     });
 
-    it('cannot be reached through a guessed MailFlow Content-ID', async () => {
+    it('cannot be reached through a guessed AMail Content-ID', async () => {
       const { mgr, account } = serve({
         type: 'multipart/related',
         childNodes: [html(), attachedImage('2', { dispositionParameters: { filename: 'secret.png' } })],
@@ -4003,7 +4003,7 @@ describe('computeThreadId subject fallback requires a shared correspondent (#468
   });
 
   it('does not merge two senders who only have the account owner in common', async () => {
-    // The report: PayPal and an unrelated sender used the same subject, and MailFlow
+    // The report: PayPal and an unrelated sender used the same subject, and AMail
     // threaded them together.
     query.mockResolvedValueOnce({
       rows: [{
@@ -5071,7 +5071,7 @@ describe('folder integrity sync error text (#474)', () => {
 // A fresh Yahoo account with a fresh app password had its FIRST secondary login refused
 // with [UNAVAILABLE] while the primary session worked: a per-account session ceiling, not
 // a throttle (Thunderbird hit the same wall, Mozilla bug 1727971). These pin the pieces
-// that make MailFlow open fewer, politer connections against such a provider.
+// that make AMail open fewer, politer connections against such a provider.
 describe('yahoo session budget (#474)', () => {
   const YAHOO = { id: '', user_id: 'u1', imap_host: 'imap.mail.yahoo.com', email_address: 'y@example.test', auth_user: 'y', auth_pass: 'enc' };
   let seq = 100;

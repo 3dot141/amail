@@ -6,8 +6,8 @@
 #   # edit .env, then:
 #   docker compose up -d
 #
-# To pin a specific version instead of latest, set MAILFLOW_VERSION in your .env:
-#   MAILFLOW_VERSION=1.0.0
+# To pin a specific version instead of latest, set AMAIL_VERSION in your .env:
+#   AMAIL_VERSION=1.0.0
 
 services:
 
@@ -15,8 +15,8 @@ services:
   # Exposes HTTPS on APP_PORT and HTTP on APP_HTTP_PORT.
   # HTTP is intended for use behind a reverse proxy that terminates TLS.
   frontend:
-    image: ghcr.io/maathimself/mailflow-frontend:${MAILFLOW_VERSION:-latest}
-    container_name: mailflow-frontend
+    image: ghcr.io/3dot141/amail-frontend:${AMAIL_VERSION:-latest}
+    container_name: amail-frontend
     restart: unless-stopped
     ports:
       - "${APP_PORT:-443}:443"
@@ -40,8 +40,8 @@ services:
 
   # ── Backend API ──────────────────────────────────────────────────────────────
   backend:
-    image: ghcr.io/maathimself/mailflow-backend:${MAILFLOW_VERSION:-latest}
-    container_name: mailflow-backend
+    image: ghcr.io/3dot141/amail-backend:${AMAIL_VERSION:-latest}
+    container_name: amail-backend
     restart: unless-stopped
     # Room for a send in flight to finish on a restart (the backend waits up to 25 s).
     stop_grace_period: 30s
@@ -91,7 +91,7 @@ services:
   # ── PostgreSQL ───────────────────────────────────────────────────────────────
   postgres:
     image: postgres:16-alpine
-    container_name: mailflow-postgres
+    container_name: amail-postgres
     restart: unless-stopped
     environment:
       POSTGRES_DB: ${DB_NAME:-mailflow}
@@ -111,7 +111,7 @@ services:
   # ── Redis (sessions + caching) ───────────────────────────────────────────────
   redis:
     image: redis:7-alpine
-    container_name: mailflow-redis
+    container_name: amail-redis
     restart: unless-stopped
     command: redis-server --save 60 1 --loglevel warning
     volumes:
@@ -132,7 +132,7 @@ services:
   caddy:
     profiles: ["https"]
     image: caddy:2-alpine
-    container_name: mailflow-caddy
+    container_name: amail-caddy
     restart: unless-stopped
     ports:
       - "80:80"

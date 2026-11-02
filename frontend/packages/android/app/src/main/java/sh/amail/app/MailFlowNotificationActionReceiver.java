@@ -1,4 +1,4 @@
-package sh.mailflow.app;
+package sh.amail.app;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

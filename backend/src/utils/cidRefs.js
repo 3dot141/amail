@@ -8,7 +8,7 @@
 // not fetched again for references left in it. A body whose image bytes did not arrive is stored
 // without it and retried on the next view.
 //
-// The marker also says which MailFlow fetched the body. Images an email uses in its own layout
+// The marker also says which AMail fetched the body. Images an email uses in its own layout
 // were shown as broken attachments in bodies fetched before it (#640), with or without a cid:
 // reference left, so a body without it whose message has an image attachment is fetched once
 // more (needsImageRefetch). Changing how bodies are fetched for images means a new marker.
@@ -56,7 +56,7 @@ export function settleCids(html, complete) {
   return `${withoutCidMarker(html)}${CIDS_SETTLED}`;
 }
 
-// The body as it leaves MailFlow: the marker is for the cache only.
+// The body as it leaves AMail: the marker is for the cache only.
 export const withoutCidMarker = (html) => (typeof html === 'string'
   ? [CIDS_SETTLED, ...LEGACY_CIDS_SETTLED].reduce((out, marker) => out.split(marker).join(''), html)
   : html);

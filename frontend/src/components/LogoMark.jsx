@@ -1,4 +1,4 @@
-// Shared MailFlow logo mark — used in Sidebar and LoginPage.
+// Shared AMail logo mark — used in Sidebar and LoginPage.
 //
 // Blue-envelope brand mark (261102): fixed brand gradient instead of the
 // theme accent, matching the favicon / PWA icon artwork. No gloss or seam

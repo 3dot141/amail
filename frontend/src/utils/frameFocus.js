@@ -11,7 +11,7 @@
 // Left alone: a selection in the email (Copy works natively while focus stays there; focus
 // returns once the selection is cleared) and focus that arrived by Tab (keyboard navigation of the
 // email's links). Right-clicking the email shows Safari's own menu for the same reason, and that
-// one cannot be changed from outside: MailFlow's menu still opens anywhere around the email.
+// one cannot be changed from outside: AMail's menu still opens anywhere around the email.
 
 let listenersRun = null;
 

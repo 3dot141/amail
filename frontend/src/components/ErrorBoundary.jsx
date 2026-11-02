@@ -58,7 +58,7 @@ export default class ErrorBoundary extends React.Component {
   handleCopy = () => {
     const { error } = this.state;
     const details = [
-      `MailFlow error: ${error?.message || String(error)}`,
+      `AMail error: ${error?.message || String(error)}`,
       `URL: ${window.location?.href || 'unknown'}`,
       `User agent: ${navigator?.userAgent || 'unknown'}`,
       error?.stack ? `\n${error.stack}` : '',
@@ -99,7 +99,7 @@ export default class ErrorBoundary extends React.Component {
       }}>
         <div style={{ maxWidth: 520, width: '100%' }}>
           <h1 style={{ fontSize: 20, fontWeight: 600, margin: '0 0 8px' }}>
-            {staleBuild ? 'MailFlow has been updated' : 'MailFlow hit an error and stopped'}
+            {staleBuild ? 'AMail has been updated' : 'AMail hit an error and stopped'}
           </h1>
           <p style={{ margin: '0 0 16px', fontSize: 14, lineHeight: 1.6, color: 'var(--text-secondary, #555)' }}>
             {staleBuild === 'reloading' && 'Loading the new version…'}
@@ -121,7 +121,7 @@ export default class ErrorBoundary extends React.Component {
             <button
               type="button"
               onClick={() => window.location.reload()}
-              style={{ ...button, background: 'var(--accent, #6366f1)', color: '#fff', borderColor: 'transparent' }}
+              style={{ ...button, background: 'var(--accent, #0868F7)', color: '#fff', borderColor: 'transparent' }}
             >
               Reload
             </button>

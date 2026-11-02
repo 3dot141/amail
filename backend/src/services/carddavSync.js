@@ -97,7 +97,7 @@ async function upsertCardavContact(bookId, userId, c) {
 }
 
 // Enrich an existing contact (in another book) with the vCard's descriptive
-// fields. Values the card lacks are kept rather than cleared: MailFlow cannot tell
+// fields. Values the card lacks are kept rather than cleared: AMail cannot tell
 // a value the user entered from one an earlier sync copied from the card. A contact
 // that an earlier book already merged this sync only has its gaps filled, so two
 // books that disagree settle instead of rewriting it on every sync.
@@ -118,7 +118,7 @@ async function mergeIntoExisting(id, c, fillOnly) {
     emails: row.emails, phones: row.phones, organization: row.organization, notes: row.notes,
   };
   // A display name that is only the email address is not a name, on either side:
-  // contactFromVCard falls back to the address when a card has no FN, and MailFlow
+  // contactFromVCard falls back to the address when a card has no FN, and AMail
   // names a contact it adds from mail after its address.
   const nameOf = name => (name?.toLowerCase() === c.primaryEmail ? null : name);
   const card = { ...c, displayName: nameOf(c.displayName) };
@@ -154,7 +154,7 @@ async function mergeIntoExisting(id, c, fillOnly) {
   };
   const photoData = fillOnly && row.photo_data ? null : c.photoData;
   const vcard = generateVCard(merged);
-  // Regenerating the card drops what a client stored that MailFlow does not model
+  // Regenerating the card drops what a client stored that AMail does not model
   // (ADR, BDAY, ...), so an unchanged contact is left alone unless its stored card
   // is missing or is the remote card an earlier merge copied in.
   const storedUid = parseVCard(row.vcard).uid;

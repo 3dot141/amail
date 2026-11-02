@@ -8,13 +8,13 @@ import { senderColor } from '../themes.js';
 //
 // Scrolling, not touch listeners, because the email body is a sandboxed frame without scripts,
 // and WebKit (every browser on iOS) runs no event listener inside such a frame, not even one
-// MailFlow's own page registered: a gesture listening there never hears the finger. A sideways
+// AMail's own page registered: a gesture listening there never hears the finger. A sideways
 // pan over a frame that cannot scroll sideways is handed to the scroller around it by the browser
 // itself, in every engine, and links, text selection, vertical scrolling and an email's own
 // sideways-scrolling parts all keep working as they did.
 //
 // The left edge strip belongs to the back swipe (hooks/useSwipeBack.js): it sits over the
-// frame, so a touch there stays in MailFlow's page.
+// frame, so a touch there stays in AMail's page.
 
 // How long a pager resting a pixel or two off a page edge waits before that counts as landed.
 const SETTLE_MS = 80;
@@ -173,7 +173,7 @@ export default function SwipePager({ enabled, prev, next, navKey, onNavigate, on
         </div>
         {next && <Peek row={next} side="next" />}
       </div>
-      {/* The back swipe's edge: over the frame, so its touches stay in MailFlow's page. */}
+      {/* The back swipe's edge: over the frame, so its touches stay in AMail's page. */}
       <div data-swipe-edge="" aria-hidden="true" style={{
         position: 'absolute', left: 0, top: 0, bottom: 0, width: 16, zIndex: 2, touchAction: 'pan-y',
       }} />

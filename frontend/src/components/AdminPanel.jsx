@@ -108,7 +108,7 @@ function AccountForm({ initial, onSave, onCancel, prefill, onMicrosoftSignIn, on
   const isEdit = !!initial?.id;
   const signedInWith = isEdit && OAUTH_PROVIDERS.has(initial?.oauth_provider) ? initial.oauth_provider : null;
   const [form, setForm] = useState(() => initial || {
-    name: '', email_address: prefill?.email || '', color: '#6366f1', protocol: 'imap',
+    name: '', email_address: prefill?.email || '', color: '#0868F7', protocol: 'imap',
     imap_host: '', imap_port: 993, imap_skip_tls_verify: false,
     smtp_host: '', smtp_port: 587, smtp_tls: 'STARTTLS',
     smtp_auth_user: '', smtp_auth_pass: '',
@@ -127,7 +127,7 @@ function AccountForm({ initial, onSave, onCancel, prefill, onMicrosoftSignIn, on
   const [selectedPreset, setSelectedPreset] = useState(prefill?.preset || null);
   const [mailPolicy, setMailPolicy] = useState({ allowPrivateHosts: false, allowInsecureTls: false, allowNonstandardPorts: false });
   // Whether an Outlook.com address can be connected right away through Integrations, with the
-  // instance's own app or MailFlow's built-in one (#674). Asked only once one is typed, and
+  // instance's own app or AMail's built-in one (#674). Asked only once one is typed, and
   // only in a build that ships the built-in app; otherwise the note stays as it was.
   const [msPersonalReady, setMsPersonalReady] = useState(false);
   const [msWorkReady, setMsWorkReady] = useState(false);
@@ -1840,7 +1840,7 @@ function LayoutDiagram({ layoutConfig, active }) {
   const isColumn = layoutConfig.direction === 'column';
   const accent = active ? 'var(--accent)' : 'var(--border)';
   const bg1 = active ? 'var(--accent-dim)' : 'var(--bg-elevated)';
-  const bg2 = active ? 'rgba(124,106,247,0.08)' : 'var(--bg-tertiary)';
+  const bg2 = active ? 'rgba(8,104,247,0.08)' : 'var(--bg-tertiary)';
 
   // Sidebar width fraction (always ~15% of diagram)
   const sw = 14;
@@ -2070,7 +2070,7 @@ function ToggleRow({ label, desc, checked, onChange, disabled = false }) {
 }
 
 // ─── Appearance › Layout ─────────────────────────────────────────────────────
-// How things look: the pane arrangement and what the message list shows. How MailFlow acts
+// How things look: the pane arrangement and what the message list shows. How AMail acts
 // (reading, writing, sync) is under Behavior.
 function LayoutsTab() {
   const { t } = useTranslation();
@@ -2233,13 +2233,13 @@ function LayoutsTab() {
 }
 
 // ─── Behavior ────────────────────────────────────────────────────────────────
-// How MailFlow acts: reading, writing, syncing, and opening mailto: links.
+// How AMail acts: reading, writing, syncing, and opening mailto: links.
 function BehaviorTab() {
   const { t } = useTranslation();
   const isMobile = useMobile();
   const { swipeActions, setSwipeAction, syncInterval, setSyncInterval, folderSyncInterval, setFolderSyncInterval, autoOpenReplyDrafts, setAutoOpenReplyDrafts, plaintextEmail, setPlaintextEmail, replyDefault, setReplyDefault, afterRemove, setAfterRemove, markReadBehavior, setMarkReadBehavior, markReadDelay, setMarkReadDelay, accounts, defaultSender, setDefaultSender } = useStore();
 
-  // "Set MailFlow as your default email app": registerProtocolHandler is the
+  // "Set AMail as your default email app": registerProtocolHandler is the
   // cross-browser path (works in Firefox and non-installed Chromium) and must be
   // called from a user gesture, so it lives behind this button. Feature-detected in
   // the JSX; not available on iOS/Safari.
@@ -2787,7 +2787,7 @@ function IntegrationsTab() {
 }
 
 // ─── Email providers (admin) ─────────────────────────────────────────────────
-// How people sign in to Microsoft and Google mailboxes: MailFlow's shared Microsoft app for
+// How people sign in to Microsoft and Google mailboxes: AMail's shared Microsoft app for
 // personal accounts, and the instance's own Microsoft and Google apps. Configuration only;
 // everyone adds their own accounts under Accounts > Add account. (#674)
 function MailSignInTab() {
@@ -2887,7 +2887,7 @@ function MailSignInTab() {
   const guide = (titleKey, stepKeys, extraKey) => (
     <div style={{
       padding: '12px 14px', borderRadius: 8, margin: '12px 0 16px',
-      background: 'rgba(124,106,247,0.06)', border: '1px solid rgba(124,106,247,0.15)',
+      background: 'rgba(8,104,247,0.06)', border: '1px solid rgba(8,104,247,0.15)',
       fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.7,
     }}>
       <div style={{ fontWeight: 600, color: 'var(--accent)', marginBottom: 6 }}>{t(titleKey)}</div>
@@ -4566,7 +4566,7 @@ function SystemEmailSection() {
   const { t } = useTranslation();
   const [config, setConfig] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [form, setForm] = useState({ host: '', port: '587', tls: 'STARTTLS', user: '', pass: '', fromName: 'MailFlow', fromEmail: '' });
+  const [form, setForm] = useState({ host: '', port: '587', tls: 'STARTTLS', user: '', pass: '', fromName: 'AMail', fromEmail: '' });
   const [saving, setSaving] = useState(false);
   const [testing, setTesting] = useState(false);
   const [msg, setMsg] = useState(null);
@@ -4576,7 +4576,7 @@ function SystemEmailSection() {
       .then(({ config: cfg }) => {
         if (cfg) {
           setConfig(cfg);
-          setForm({ host: cfg.host || '', port: String(cfg.port || 587), tls: cfg.tls || 'STARTTLS', user: cfg.user || '', pass: cfg.pass || '', fromName: cfg.fromName || 'MailFlow', fromEmail: cfg.fromEmail || '' });
+          setForm({ host: cfg.host || '', port: String(cfg.port || 587), tls: cfg.tls || 'STARTTLS', user: cfg.user || '', pass: cfg.pass || '', fromName: cfg.fromName || 'AMail', fromEmail: cfg.fromEmail || '' });
         }
       })
       .catch(console.error)
@@ -4608,7 +4608,7 @@ function SystemEmailSection() {
   const handleRemove = async () => {
     await api.admin.deleteSystemEmail();
     setConfig(null);
-    setForm({ host: '', port: '587', tls: 'STARTTLS', user: '', pass: '', fromName: 'MailFlow', fromEmail: '' });
+    setForm({ host: '', port: '587', tls: 'STARTTLS', user: '', pass: '', fromName: 'AMail', fromEmail: '' });
     setMsg({ type: 'ok', text: t('admin.systemEmail.removed') });
   };
 
@@ -4675,7 +4675,7 @@ function SystemEmailSection() {
         {field(t('admin.systemEmail.password'), 'pass', 'password', config ? t('admin.systemEmail.passPlaceholder') : '')}
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0 12px' }}>
-          <div>{field(t('admin.systemEmail.fromName'), 'fromName', 'text', 'MailFlow')}</div>
+          <div>{field(t('admin.systemEmail.fromName'), 'fromName', 'text', 'AMail')}</div>
           <div>{field(t('admin.systemEmail.fromEmail'), 'fromEmail', 'text', t('admin.systemEmail.fromEmailPh'))}</div>
         </div>
 
@@ -4900,7 +4900,7 @@ function UsersAndInvitesPanel() {
                 {u.isAdmin && (
                   <span style={{
                     fontSize: 10, padding: '2px 6px', borderRadius: 20,
-                    background: 'rgba(124,106,247,0.15)', color: 'var(--accent)',
+                    background: 'rgba(8,104,247,0.15)', color: 'var(--accent)',
                     border: '1px solid rgba(124,106,247,0.25)', fontWeight: 600,
                     letterSpacing: '0.04em', textTransform: 'uppercase',
                   }}>
@@ -5848,7 +5848,7 @@ function AboutTab() {
   return (
     <div style={{ maxWidth: 420 }}>
       <div style={{ fontSize: 20, fontWeight: 700, color: 'var(--text-primary)', marginBottom: 4 }}>
-        MailFlow
+        AMail
       </div>
       <div style={{ fontSize: 13, color: 'var(--text-secondary)', marginBottom: 24 }}>
         {t('admin.about.subtitle')}

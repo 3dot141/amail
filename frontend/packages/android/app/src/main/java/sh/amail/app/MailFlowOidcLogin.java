@@ -1,4 +1,4 @@
-package sh.mailflow.app;
+package sh.amail.app;
 
 import android.app.Dialog;
 import android.graphics.Bitmap;

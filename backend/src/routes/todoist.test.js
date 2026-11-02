@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeAll, afterAll, afterEach, vi } from 'vitest';
 
-// The frontend treats any 401 outside /auth/ as an expired MailFlow session and signs the
+// The frontend treats any 401 outside /auth/ as an expired AMail session and signs the
 // user out, so Todoist rejecting the saved token must not come back as a 401. db, encryption
 // and auth are stubbed; fetch is stubbed per test to stand in for the Todoist API.
 vi.mock('../services/db.js', () => ({

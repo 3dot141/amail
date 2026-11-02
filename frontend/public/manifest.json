@@ -1,6 +1,6 @@
 {
-  "name": "MailFlow",
-  "short_name": "MailFlow",
+  "name": "AMail",
+  "short_name": "AMail",
   "description": "Your unified inbox",
   "start_url": "/",
   "display": "standalone",

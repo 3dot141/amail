@@ -61,7 +61,7 @@ const KINDS = {
   },
 };
 
-// Providers MailFlow can sign in to again from the account itself.
+// Providers AMail can sign in to again from the account itself.
 const SIGN_IN_PROVIDERS = new Set(['microsoft', 'google']);
 
 // null when the account has no error. An error with no code (recorded before the code

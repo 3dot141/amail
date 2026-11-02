@@ -1204,7 +1204,7 @@ function MailboxList() {
             fetch('/api/mail/messages/bulk-delete', {
               method: 'POST',
               credentials: 'include',
-              headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'MailFlow' },
+              headers: { 'Content-Type': 'application/json', 'X-Requested-With': 'AMail' },
               body: JSON.stringify({ ids: deleteIds }),
               keepalive: true,
             });
@@ -1212,7 +1212,7 @@ function MailboxList() {
             fetch(`/api/mail/messages/${deleteIds[0]}`, {
               method: 'DELETE',
               credentials: 'include',
-              headers: { 'X-Requested-With': 'MailFlow' },
+              headers: { 'X-Requested-With': 'AMail' },
               keepalive: true,
             });
           }
@@ -2507,7 +2507,7 @@ function MailboxList() {
     if (isDraftsFolder) {
       try {
         const [bodyData, bcc] = await Promise.all([
-          // Images unblocked, through MailFlow's proxy: a draft opened with them blocked was
+          // Images unblocked, through AMail's proxy: a draft opened with them blocked was
           // saved back with the placeholders, losing the quoted email's images for good. The
           // composer saves and sends the proxy URLs as the draft's own references.
           api.getMessageBody(message.id, true),
@@ -4623,7 +4623,7 @@ function ThreadRow({ message, isExpanded, threadMsgs, isLoadingThread, selectedM
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 3 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 6, flex: 1, minWidth: 0 }}>
               {showAccount && (
-                <AccountMark accountId={message.account_id} color={message.account_color || '#6366f1'} size={6} />
+                <AccountMark accountId={message.account_id} color={message.account_color || '#0868F7'} size={6} />
               )}
               <span style={{
                 fontSize: 13, fontWeight: unreadCount > 0 ? 600 : 400,
@@ -4972,7 +4972,7 @@ function MessageRow({ message, selected, lastViewed, isChecked, selectionMode, s
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 3 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0, flex: 1 }}>
             {showAccount && (
-              <AccountMark accountId={message.account_id} color={message.account_color || '#6366f1'} size={6} />
+              <AccountMark accountId={message.account_id} color={message.account_color || '#0868F7'} size={6} />
             )}
             <span style={{
               fontSize: 13, fontWeight: message.is_read ? 400 : 600,

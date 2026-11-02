@@ -27,7 +27,7 @@ vi.mock('../middleware/auth.js', () => ({
   requireAuth: (req, _res, next) => { req.session = { userId: 'admin-1' }; next(); },
   requireAdmin: (_req, _res, next) => next(),
 }));
-// A stand-in for MailFlow's registered app, so the tests never depend on the shipped ID.
+// A stand-in for AMail's registered app, so the tests never depend on the shipped ID.
 vi.mock('../services/microsoftBuiltinApp.js', () => ({ MAILFLOW_MS_CLIENT_ID: 'builtin-app-id' }));
 
 import 'express-async-errors';
@@ -37,7 +37,7 @@ import integrationsRoutes, { loadIntegrationConfigs } from './integrations.js';
 const ENV_KEYS = ['MS_CLIENT_ID', 'MS_CLIENT_SECRET', 'MS_TENANT_ID', 'MS_REDIRECT_URI', 'MS_BUILTIN_APP'];
 const savedEnv = Object.fromEntries(ENV_KEYS.map(k => [k, process.env[k]]));
 
-// Personal accounts through MailFlow's built-in Microsoft app (#674): what the status
+// Personal accounts through AMail's built-in Microsoft app (#674): what the status
 // endpoint reports, and the admin's opt-out from .env or Settings > Integrations.
 describe('Microsoft built-in app status and opt-out', () => {
   let server;

@@ -4,13 +4,13 @@
 // Used by the dark-mode audit harness (scripts/dark-audit) to score each way of showing a body, and
 // meant for dark email bodies to check their own result before showing it. Runs on a laid-out
 // document (the frame's), because only the browser knows an element's final colors after the
-// email's CSS, inheritance and MailFlow's own styles have all applied.
+// email's CSS, inheritance and AMail's own styles have all applied.
 //
 // Text a sender hides on purpose is not counted: newsletters carry preview text that is zero-sized,
 // clipped away, transparent or pushed off screen. Text drawn over a background image (or a
 // gradient) is counted separately, as its background is not a single color.
 
-// A computed color: always rgb() or rgba() in the browsers MailFlow supports. Anything else (a
+// A computed color: always rgb() or rgba() in the browsers AMail supports. Anything else (a
 // color() or oklch() value) is reported as unknown rather than guessed.
 const RGB = /^rgba?\(\s*([\d.]+)[\s,]+([\d.]+)[\s,]+([\d.]+)(?:\s*[,/]\s*([\d.]+%?))?\s*\)$/i;
 export function parseColor(value) {
@@ -52,7 +52,7 @@ export function contrastRatio(a, b) {
 
 // Not <noscript>: the email frame runs without scripts, so a browser shows its content as text.
 // Whether a computed background-image paints anything. A remote background image blocked by
-// MailFlow (backend emailSanitizer.js blockRemoteImages) is left as url("data:,"), which draws
+// AMail (backend emailSanitizer.js blockRemoteImages) is left as url("data:,"), which draws
 // nothing, so it counts as none.
 const BLOCKED_IMAGE = /url\(\s*["']?data:,["']?\s*\)/gi;
 export function paintsImage(backgroundImage) {

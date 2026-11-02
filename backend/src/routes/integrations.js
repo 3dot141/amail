@@ -52,7 +52,7 @@ const PROVIDER_ENV = {
   },
 };
 
-// Whether MailFlow's built-in Microsoft app is offered for personal accounts (#674). The
+// Whether AMail's built-in Microsoft app is offered for personal accounts (#674). The
 // admin's choice in Settings has its own system_settings row, not a place in the microsoft
 // config, so removing the instance's own app does not quietly turn the shared app back on.
 // Once set, it takes precedence over MS_BUILTIN_APP in .env.
@@ -123,7 +123,7 @@ router.get('/', requireAdmin, async (req, res) => {
 // The OAuth connect routes already require only an authenticated session and bind the
 // resulting mailbox to that user, so no privilege is granted here. (#315)
 //
-// configured is the instance's own app. builtinApp is whether MailFlow's built-in app may be
+// configured is the instance's own app. builtinApp is whether AMail's built-in app may be
 // offered: this build ships one (builtinAppShipped) and the admin has not opted out. Without
 // an own app, personal accounts connect through the built-in one over the device-code flow.
 // personalAccounts says whether a personal account can sign in at all right now. (#674)
@@ -136,7 +136,7 @@ router.get('/status', async (req, res) => {
       builtinApp: msBuiltinAppEnabled(),
       builtinAppShipped: msBuiltinAppShipped(),
       personalAccounts: msPersonalAccountsAvailable(),
-      // Which app signs personal accounts in: 'own', 'shared' (MailFlow's), or null.
+      // Which app signs personal accounts in: 'own', 'shared' (AMail's), or null.
       personalVia: msPersonalSignInVia(),
       // Work and school accounts need the instance's own app on a tenant that admits them;
       // with a secret and redirect URI it can also sign in through Microsoft's page (redirect).
@@ -156,7 +156,7 @@ router.get('/status', async (req, res) => {
   });
 });
 
-// Offer MailFlow's built-in Microsoft app for personal accounts, or stop offering it (#674).
+// Offer AMail's built-in Microsoft app for personal accounts, or stop offering it (#674).
 // Turning it off stops new sign-ins through it; accounts already connected keep refreshing
 // through the client they were connected with. Admin only.
 router.put('/microsoft/builtin-app', requireAdmin, async (req, res) => {

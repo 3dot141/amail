@@ -1,6 +1,6 @@
 import DOMPurify from 'dompurify';
 
-// Email HTML placed in MailFlow's own page rather than the email frame: the composer's quoted
+// Email HTML placed in AMail's own page rather than the email frame: the composer's quoted
 // reply or forward, and the div renderer. The frame's CSP allows no remote images, but the app's
 // allows any https: image (avatars, sender favicons), so here nothing but the page itself stands
 // between a sender's image and the reader's browser. The server blocks or proxies every remote
@@ -9,7 +9,7 @@ import DOMPurify from 'dompurify';
 // which drops those newlines and decodes those escapes, fetched it from the sender on Reply.
 //
 // So every image URL is judged here as the browser reads it: through its own URL parser for
-// attributes and its own CSS parser for inline styles. Only MailFlow's own origin (the image
+// attributes and its own CSS parser for inline styles. Only AMail's own origin (the image
 // proxy), data:, blob: and cid: are kept.
 
 const KEPT_SCHEMES = new Set(['data:', 'blob:', 'cid:']);

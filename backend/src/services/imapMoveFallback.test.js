@@ -4,7 +4,7 @@
 // \Deleted + EXPUNGE, and it runs the EXPUNGE whether or not the COPY succeeded
 // (imapflow lib/commands/move.js). Its COPY reports a server NO by returning false rather
 // than throwing, so a COPY the server refuses (destination gone, over quota) still expunges
-// the source. MailFlow's `result === false` check runs after that, when the mail is gone.
+// the source. AMail's `result === false` check runs after that, when the mail is gone.
 //
 // The fake connection below hands messageMove to imapflow's own move command, so these
 // tests exercise the fallback as imapflow ships it rather than a model of it. Everything
@@ -201,7 +201,7 @@ function connectionTo(server) {
       carry(server, this.mailbox.path, attributes[1].value, uidMap);
       return { next: () => {}, response: { attributes: [] } };
     },
-    // imapflow's resolveRange turns MailFlow's array of UID strings into a sequence string
+    // imapflow's resolveRange turns AMail's array of UID strings into a sequence string
     // before the command runs; do the same, then hand over to imapflow's own MOVE.
     messageMove(range, destination, options) {
       return imapflowMove(this, [].concat(range).join(','), destination, options);

@@ -2,7 +2,7 @@
 //
 // The background sync only ever polls INBOX, and so does the manual "sync now" button.
 // Every other folder was populated once at backfill and then left alone, so anything that
-// arrived from outside MailFlow was invisible indefinitely: mail sent from another client
+// arrived from outside AMail was invisible indefinitely: mail sent from another client
 // landing in Sent, messages filed from a phone, server-side rules moving things. The
 // on-open sync that did exist only fired for a folder with NO local messages, so a folder
 // went permanently stale the moment it held one.

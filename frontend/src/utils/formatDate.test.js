@@ -1,4 +1,4 @@
-// Dates in MailFlow's language, not the browser's (#593).
+// Dates in AMail's language, not the browser's (#593).
 import { test, describe, afterEach } from 'node:test';
 import assert from 'node:assert/strict';
 import i18next from 'i18next';
@@ -9,7 +9,7 @@ const aYearAgo = () => { const d = new Date(); d.setFullYear(d.getFullYear() - 1
 afterEach(() => { i18next.language = undefined; });
 
 describe('appLocale', () => {
-  test('follows the language chosen in MailFlow, mapped to a BCP 47 tag', () => {
+  test('follows the language chosen in AMail, mapped to a BCP 47 tag', () => {
     for (const [code, tag] of [['ru', 'ru'], ['de', 'de'], ['ptBR', 'pt-BR'], ['zhCN', 'zh-CN']]) {
       i18next.language = code;
       assert.equal(appLocale(), tag);

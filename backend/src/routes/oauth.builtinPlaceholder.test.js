@@ -9,7 +9,7 @@ import oauthRoutes from './oauth.js';
 import { MAILFLOW_MS_CLIENT_ID } from '../services/microsoftBuiltinApp.js';
 import { msBuiltinAppShipped } from '../services/microsoftOAuthClient.js';
 
-// Until MailFlow's registered client ID replaces the all-zero placeholder, a build has no
+// Until AMail's registered client ID replaces the all-zero placeholder, a build has no
 // built-in app and the device-code flow behaves as it did before #674.
 describe.skipIf(msBuiltinAppShipped())('built-in Microsoft app placeholder', () => {
   afterEach(() => {

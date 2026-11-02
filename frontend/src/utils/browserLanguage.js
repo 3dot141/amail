@@ -2,7 +2,7 @@
 // screen already speaks the user's language. An explicit choice (Settings → Appearance →
 // Language, kept in localStorage and in the account's preferences) always wins over this.
 
-// Browser tags whose MailFlow locale is not simply their primary subtag. European Portuguese
+// Browser tags whose AMail locale is not simply their primary subtag. European Portuguese
 // readers get Brazilian Portuguese rather than English; Traditional Chinese is skipped below
 // rather than shown in Simplified.
 const ALIASES = {
@@ -24,7 +24,7 @@ export function detectLanguage(preferred, supported, fallback = 'en') {
   return fallback;
 }
 
-// The BCP 47 tag for <html lang>, from a MailFlow locale code.
+// The BCP 47 tag for <html lang>, from a AMail locale code.
 export function htmlLang(code) {
   return { ptBR: 'pt-BR', zhCN: 'zh-CN' }[code] || code;
 }

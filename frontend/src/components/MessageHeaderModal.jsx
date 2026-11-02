@@ -121,7 +121,7 @@ export default function MessageHeaderModal({ messageId, subject, onClose, onSubj
             return (
               <div key={i} style={{
                 borderBottom: '1px solid var(--border-subtle)',
-                background: isImportant ? 'rgba(124,106,247,0.04)' : 'transparent',
+                background: isImportant ? 'rgba(8,104,247,0.04)' : 'transparent',
                 padding: '8px 16px',
               }}>
                 <div style={{
@@ -234,7 +234,7 @@ export default function MessageHeaderModal({ messageId, subject, onClose, onSubj
                   return (
                     <tr key={i} style={{
                       borderBottom: '1px solid var(--border-subtle)',
-                      background: isImportant ? 'rgba(124,106,247,0.04)' : 'transparent',
+                      background: isImportant ? 'rgba(8,104,247,0.04)' : 'transparent',
                     }}>
                       <td style={{
                         padding: '6px 12px 6px 0', verticalAlign: 'top',

@@ -81,7 +81,7 @@ export const dateBounds = (now = new Date()) => ({
   max: localDateValue(new Date(now.getTime() + MAX_AHEAD_MS)),
 });
 
-// "Tue, Oct 28, 8:00 AM" in MailFlow's language and the browser's time zone, with the year when it
+// "Tue, Oct 28, 8:00 AM" in AMail's language and the browser's time zone, with the year when it
 // is not this year's.
 export function formatSendAt(value, locale, now = new Date()) {
   const d = value instanceof Date ? value : new Date(value);

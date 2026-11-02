@@ -9,8 +9,8 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:data="mailflow://compose"
-            android:targetPackage="sh.mailflow.app"
-            android:targetClass="sh.mailflow.app.MainActivity" />
+            android:targetPackage="sh.amail.app"
+            android:targetClass="sh.amail.app.MainActivity" />
     </shortcut>
 
     <shortcut
@@ -22,7 +22,7 @@
         <intent
             android:action="android.intent.action.VIEW"
             android:data="mailflow://sync"
-            android:targetPackage="sh.mailflow.app"
-            android:targetClass="sh.mailflow.app.MainActivity" />
+            android:targetPackage="sh.amail.app"
+            android:targetClass="sh.amail.app.MainActivity" />
     </shortcut>
 </shortcuts>

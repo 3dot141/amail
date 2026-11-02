@@ -1,5 +1,5 @@
-// The image proxy: remote images in an email load through MailFlow, so the sender's server sees
-// MailFlow, not the reader's address, device or location, and the email frame can forbid every
+// The image proxy: remote images in an email load through AMail, so the sender's server sees
+// AMail, not the reader's address, device or location, and the email frame can forbid every
 // direct remote load. Only what the user has chosen to load goes through it (a sender they allow,
 // or "Load images"); blocked images stay blocked.
 //
@@ -9,7 +9,7 @@
 // hop, whatever the admin's private-hosts setting, and plaintext HTTP.
 //
 // What comes back is served only if its bytes are a raster image of a known type, under a size
-// limit; never SVG, which opened in a tab would be a document running on MailFlow's own origin. It
+// limit; never SVG, which opened in a tab would be a document running on AMail's own origin. It
 // is served under that detected type, with nosniff and a sandbox CSP, and cached privately by the
 // browser for a day.
 import { safeFetch } from './safeFetch.js';
@@ -75,7 +75,7 @@ export async function fetchProxiedImage(url, {
       // No cookies, no referrer: a fresh request that says only what it is.
       headers: {
         Accept: 'image/avif,image/webp,image/png,image/jpeg,image/gif,image/*;q=0.8',
-        'User-Agent': 'Mozilla/5.0 (compatible; MailFlow image proxy)',
+        'User-Agent': 'Mozilla/5.0 (compatible; AMail image proxy)',
       },
     });
   } catch {

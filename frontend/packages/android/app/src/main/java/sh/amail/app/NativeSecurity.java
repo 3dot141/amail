@@ -1,4 +1,4 @@
-package sh.mailflow.app;
+package sh.amail.app;
 
 import java.net.URI;
 import java.nio.charset.StandardCharsets;

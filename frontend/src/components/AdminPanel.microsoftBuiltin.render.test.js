@@ -1,4 +1,4 @@
-// Render test for Microsoft sign-in settings and MailFlow's built-in app (#674): what
+// Render test for Microsoft sign-in settings and AMail's built-in app (#674): what
 // Settings > Email providers shows administrators in each state the server reports, the
 // admin's switch for the shared app, and the add-account note for Outlook.com addresses.
 //

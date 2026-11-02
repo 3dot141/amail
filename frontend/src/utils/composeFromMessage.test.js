@@ -373,8 +373,8 @@ describe('quoted body templates', () => {
     );
   });
 
-  // Proxied images (MailFlow's image proxy) go out as the email's own references: recipients cannot
-  // load MailFlow's proxy.
+  // Proxied images (AMail's image proxy) go out as the email's own references: recipients cannot
+  // load AMail's proxy.
   it('quotes images as shown, through the proxy, so the composer never loads them from the sender', async () => {
     // ComposeModal puts the email's own references back when it saves or sends
     // (ComposeModal.imageProxy.render.test.js).

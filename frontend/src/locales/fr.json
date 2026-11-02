@@ -674,7 +674,7 @@
       "deleted": "Supprimé"
     },
     "reason": {
-      "overdue": "Il avait plus de 6 heures de retard, MailFlow l'a donc retenu. Envoyez-le maintenant ou choisissez une autre heure.",
+      "overdue": "Il avait plus de 6 heures de retard, AMail l'a donc retenu. Envoyez-le maintenant ou choisissez une autre heure.",
       "restored": "Il a été mis en pause lors de la restauration d'une sauvegarde.",
       "editAbandoned": "Il était ouvert en modification à l'heure prévue.",
       "accountDisabled": "Son compte est désactivé.",
@@ -689,18 +689,18 @@
       "aliasMissing": "L'adresse d'envoi prévue n'existe plus.",
       "decryptFailed": "Il n'a pas pu être déchiffré sur ce serveur.",
       "accountMissing": "Son compte n'existe plus.",
-      "gaveUp": "Le serveur de messagerie a échoué à chaque essai, MailFlow a donc arrêté.",
+      "gaveUp": "Le serveur de messagerie a échoué à chaque essai, AMail a donc arrêté.",
       "failed": "Il n'a pas pu être envoyé.",
-      "uncertain": "MailFlow s'est arrêté pendant l'envoi. Il a peut-être été remis, peut-être pas. Vérifiez votre dossier Envoyés.",
+      "uncertain": "AMail s'est arrêté pendant l'envoi. Il a peut-être été remis, peut-être pas. Vérifiez votre dossier Envoyés.",
       "retrying": "La dernière tentative a échoué. Prochaine tentative : {{when}}.",
       "deleted": "Peut être restauré jusqu'à {{when}}."
     },
     "sent": {
       "markedSent": "Vous l'avez marqué comme envoyé.",
       "late": "Envoyé en retard : programmé pour {{scheduled}}, envoyé {{sent}}.",
-      "lateOffline": "Envoyé en retard : programmé pour {{scheduled}}, envoyé {{sent}} car MailFlow était hors ligne.",
+      "lateOffline": "Envoyé en retard : programmé pour {{scheduled}}, envoyé {{sent}} car AMail était hors ligne.",
       "refused": "Refusé par le serveur de messagerie pour : {{list}}",
-      "deferred": "Non remis à {{list}} : leur serveur a demandé de réessayer plus tard, et MailFlow ne réessaie pas. Renvoyez-le-leur.",
+      "deferred": "Non remis à {{list}} : leur serveur a demandé de réessayer plus tard, et AMail ne réessaie pas. Renvoyez-le-leur.",
       "noSentFolder": "Aucune copie enregistrée : le compte n'a pas de dossier Envoyés.",
       "noSentCopy": "Impossible d'enregistrer une copie dans Envoyés."
     },
@@ -729,14 +729,14 @@
     },
     "confirm": {
       "uncertainTitle": "Il a peut-être déjà été remis",
-      "uncertainBody": "MailFlow s'est arrêté pendant l'envoi. Vérifiez d'abord votre dossier Envoyés. L'envoyer à nouveau quand même ?",
+      "uncertainBody": "AMail s'est arrêté pendant l'envoi. Vérifiez d'abord votre dossier Envoyés. L'envoyer à nouveau quand même ?",
       "restoredTitle": "Mis en pause par une restauration",
       "restoredBody": "Il a été mis en pause lors de la restauration d'une sauvegarde. Si l'ancien serveur tourne encore, il pourrait l'envoyer aussi. L'envoyer d'ici ?",
       "restoredGo": "Envoyer d'ici",
       "sendAnywayTitle": "L'envoyer à nouveau ?",
-      "sendAnywayBody": "Il a peut-être déjà été remis : MailFlow s'est arrêté pendant l'envoi. Vérifiez d'abord votre dossier Envoyés. S'il est parti, les destinataires le recevront deux fois.",
+      "sendAnywayBody": "Il a peut-être déjà été remis : AMail s'est arrêté pendant l'envoi. Vérifiez d'abord votre dossier Envoyés. S'il est parti, les destinataires le recevront deux fois.",
       "markSentTitle": "Le marquer comme envoyé ?",
-      "markSentBody": "Faites-le si vous l'avez trouvé dans votre dossier Envoyés. MailFlow supprime son contenu et ne l'envoie jamais.",
+      "markSentBody": "Faites-le si vous l'avez trouvé dans votre dossier Envoyés. AMail supprime son contenu et ne l'envoie jamais.",
       "deleteTitle": "Le supprimer définitivement ?",
       "deleteBody": "Il ne sera pas envoyé et ne pourra pas être restauré."
     },
@@ -1228,7 +1228,7 @@
     },
     "folderMappings": {
       "title": "Mappage des dossiers",
-      "description": "Associez chaque rôle de messagerie à un dossier spécifique. Sélectionnez Détection auto pour laisser MailFlow utiliser le dossier que votre serveur a désigné pour ce rôle.",
+      "description": "Associez chaque rôle de messagerie à un dossier spécifique. Sélectionnez Détection auto pour laisser AMail utiliser le dossier que votre serveur a désigné pour ce rôle.",
       "loading": "Chargement des dossiers…",
       "autoDetect": "Détection auto",
       "autoDetectNone": "Détection auto (aucun trouvé)",
@@ -1242,7 +1242,7 @@
     },
     "aliases": {
       "title": "Alias",
-      "description": "Les alias vous permettent d'envoyer depuis un nom ou une adresse différente en utilisant les identifiants SMTP de ce compte. Sélectionnez un alias dans le champ De lors de la composition. MailFlow répondra automatiquement depuis un alias si un message lui était adressé.",
+      "description": "Les alias vous permettent d'envoyer depuis un nom ou une adresse différente en utilisant les identifiants SMTP de ce compte. Sélectionnez un alias dans le champ De lors de la composition. AMail répondra automatiquement depuis un alias si un message lui était adressé.",
       "addButton": "Ajouter un alias",
       "empty": "Aucun alias pour l'instant",
       "newTitle": "Nouvel alias",
@@ -1267,7 +1267,7 @@
       "title": "Apparence",
       "description": "Choisissez un thème de couleur pour l'interface",
       "darkEmailBodies": "Corps des e-mails sombres",
-      "darkEmailBodiesDesc": "Avec un thème sombre, afficher aussi les e-mails HTML en couleurs sombres : avec la version sombre de l'expéditeur s'il en a une, sinon recolorés par MailFlow. Un e-mail reste tel qu'envoyé s'il le demande ou si l'afficher en sombre rendrait le texte difficile à lire. Chaque message peut être basculé individuellement.",
+      "darkEmailBodiesDesc": "Avec un thème sombre, afficher aussi les e-mails HTML en couleurs sombres : avec la version sombre de l'expéditeur s'il en a une, sinon recolorés par AMail. Un e-mail reste tel qu'envoyé s'il le demande ou si l'afficher en sombre rendrait le texte difficile à lire. Chaque message peut être basculé individuellement.",
       "typography": "Typographie",
       "typographyDescription": "Choisissez une combinaison de polices pour l'interface",
       "typographyLoading": "Chargement des polices…",
@@ -1318,9 +1318,9 @@
       "swipeDisabled": "Désactivé",
       "swipeDisabledDesc": "Désactiver cette direction de balayage",
       "syncFrequency": "Fréquence de synchronisation des e-mails",
-      "syncFrequencyDesc": "À quelle fréquence MailFlow vérifie les nouveaux e-mails",
+      "syncFrequencyDesc": "À quelle fréquence AMail vérifie les nouveaux e-mails",
       "folderSyncFrequency": "Fréquence de synchronisation des dossiers",
-      "folderSyncFrequencyDesc": "À quelle fréquence MailFlow actualise la liste des dossiers de chaque compte depuis le serveur (dossiers créés dans d'autres applications)",
+      "folderSyncFrequencyDesc": "À quelle fréquence AMail actualise la liste des dossiers de chaque compte depuis le serveur (dossiers créés dans d'autres applications)",
       "threadingMode": "Regroupement par conversation",
       "threadingOff": "Désactivé",
       "threadingOffDesc": "Chaque message affiché individuellement",
@@ -1357,8 +1357,8 @@
       "markReadManual": "Manuellement",
       "markReadManualDesc": "Ne jamais marquer les e-mails comme lus automatiquement. Utiliser le bouton marquer comme lu.",
       "defaultMailApp": "Application e-mail par défaut",
-      "defaultMailAppDesc": "Faites en sorte que MailFlow ouvre les liens mailto: dans ce navigateur. Le navigateur vous demandera de confirmer. Fonctionne dans Firefox et Chrome/Edge ; non disponible sur iOS.",
-      "defaultMailAppBtn": "Enregistrer MailFlow",
+      "defaultMailAppDesc": "Faites en sorte que AMail ouvre les liens mailto: dans ce navigateur. Le navigateur vous demandera de confirmer. Fonctionne dans Firefox et Chrome/Edge ; non disponible sur iOS.",
+      "defaultMailAppBtn": "Enregistrer AMail",
       "defaultMailAppOk": "Confirmez l'invite dans votre navigateur pour terminer.",
       "defaultMailAppError": "Votre navigateur a bloqué la demande.",
       "markReadDelayLabel": "Délai",
@@ -1406,7 +1406,7 @@
     },
     "push": {
       "title": "Notifications push",
-      "description": "Recevez des notifications natives pour les nouveaux courriers même lorsque MailFlow n'est pas ouvert.",
+      "description": "Recevez des notifications natives pour les nouveaux courriers même lorsque AMail n'est pas ouvert.",
       "enable": "Activer",
       "disable": "Désactiver",
       "statusOn": "Notifications push activées",
@@ -1414,7 +1414,7 @@
       "statusDenied": "Permission refusée",
       "permissionDenied": "La permission de notification a été refusée. Veuillez l'activer dans les paramètres du navigateur ou du système.",
       "notSupported": "Les notifications push ne sont pas prises en charge par ce navigateur.",
-      "iosHint": "Pour recevoir des notifications push sur iOS, ajoutez d'abord MailFlow à votre écran d'accueil : appuyez sur le bouton Partager, puis sur « Ajouter à l'écran d'accueil ».",
+      "iosHint": "Pour recevoir des notifications push sur iOS, ajoutez d'abord AMail à votre écran d'accueil : appuyez sur le bouton Partager, puis sur « Ajouter à l'écran d'accueil ».",
       "notConfigured": "Les notifications push ne sont pas configurées sur ce serveur. Ajoutez des clés VAPID au fichier .env pour les activer.",
       "loading": "En cours…"
     },
@@ -1577,7 +1577,7 @@
       "edit": "Modifier",
       "editTitle": "Modifier {{username}}",
       "username": "Nom d’utilisateur",
-      "usernameHint": "Sert à se connecter à MailFlow.",
+      "usernameHint": "Sert à se connecter à AMail.",
       "recoveryEmail": "E-mail de récupération",
       "recoveryEmailHint": "Reçoit le lien « Mot de passe oublié ? ». Laissez vide pour le retirer.",
       "newPassword": "Nouveau mot de passe",
@@ -1742,7 +1742,7 @@
     },
     "sso": {
       "title": "Authentification unique",
-      "description": "Comment les utilisateurs se connectent à MailFlow lui-même, via le fournisseur d'identité de votre organisation (OIDC). La connexion des boîtes mail se trouve dans Fournisseurs de messagerie.",
+      "description": "Comment les utilisateurs se connectent à AMail lui-même, via le fournisseur d'identité de votre organisation (OIDC). La connexion des boîtes mail se trouve dans Fournisseurs de messagerie.",
       "empty": "Aucun fournisseur SSO configuré pour l'instant.",
       "addProvider": "+ Ajouter un fournisseur SSO",
       "templatePickerTitle": "Choisir un modèle de fournisseur",
@@ -1768,7 +1768,7 @@
       "domainsPh": "exemple.com, corp.exemple.com",
       "provisioning": "Mode de provisionnement",
       "provisioningDisabled": "Désactivé — les identités liées existantes peuvent encore se connecter, mais aucun nouveau lien",
-      "provisioningExisting": "Correspondance existante — lier à un compte MailFlow avec un e-mail correspondant",
+      "provisioningExisting": "Correspondance existante — lier à un compte AMail avec un e-mail correspondant",
       "provisioningOpen": "Ouvert — créer automatiquement un nouveau compte à la première connexion SSO",
       "enabled": "Fournisseur activé",
       "requireEmailVerified": "Exiger un e-mail vérifié",
@@ -1788,7 +1788,7 @@
       "allowInsecure": "Autoriser les connexions locales / auto-signées",
       "allowInsecureDesc": "Contourne la validation de l'hôte et les vérifications du certificat TLS. À utiliser uniquement pour les fournisseurs en réseau local (ex. pocketid.internal). Déconseillé pour les déploiements accessibles depuis Internet.",
       "rpLogout": "Déconnexion SSO (RP-initiated)",
-      "rpLogoutDesc": "À la déconnexion, met aussi fin à la session chez ce fournisseur en redirigeant vers son end-session endpoint, et pas seulement le cookie MailFlow. Nécessite que le fournisseur expose un end_session_endpoint et que l’URL de connexion MailFlow (…/login) soit enregistrée comme post-logout redirect URI.",
+      "rpLogoutDesc": "À la déconnexion, met aussi fin à la session chez ce fournisseur en redirigeant vers son end-session endpoint, et pas seulement le cookie AMail. Nécessite que le fournisseur expose un end_session_endpoint et que l’URL de connexion AMail (…/login) soit enregistrée comme post-logout redirect URI.",
       "adminGroupClaim": "Claim de groupe administrateur",
       "adminGroupClaimPh": "groups",
       "adminGroupClaimDesc": "Nom du claim JWT contenant les groupes de l'utilisateur (ex. groups). Laisser vide pour désactiver l'attribution du rôle admin par groupe.",
@@ -1796,7 +1796,7 @@
       "adminGroupValuePh": "mailflow-admins",
       "adminGroupValueDesc": "Le nom du groupe accordant l'accès administrateur. Les utilisateurs de ce groupe deviennent admins à chaque connexion SSO ; les utilisateurs absents de ce groupe perdent l'accès admin.",
       "loginMatchClaim": "Associer les comptes existants par",
-      "loginMatchClaimDesc": "Revendication (claim) OIDC comparée au nom d’utilisateur de chaque compte MailFlow lors de la première association d’une connexion SSO à un compte existant (mode d’approvisionnement « connexion aux comptes existants uniquement »). Valeur par défaut : email. Utilisez preferred_username, upn, etc. pour les fournisseurs d’identité dont les noms d’utilisateur ne sont pas des adresses e-mail — uniquement si votre fournisseur garantit que cette revendication est unique et non modifiable par l’utilisateur.",
+      "loginMatchClaimDesc": "Revendication (claim) OIDC comparée au nom d’utilisateur de chaque compte AMail lors de la première association d’une connexion SSO à un compte existant (mode d’approvisionnement « connexion aux comptes existants uniquement »). Valeur par défaut : email. Utilisez preferred_username, upn, etc. pour les fournisseurs d’identité dont les noms d’utilisateur ne sont pas des adresses e-mail — uniquement si votre fournisseur garantit que cette revendication est unique et non modifiable par l’utilisateur.",
       "passwordLoginDisableMsg": "Les utilisateurs ne pourront se connecter que via SSO. Si votre fournisseur SSO devient indisponible, un accès direct à la base de données sera nécessaire pour réactiver la connexion par mot de passe.",
       "passwordLoginDisableTitle": "Désactiver la connexion par mot de passe ?",
       "passwordLoginDisabled": "La connexion par mot de passe est désactivée",
@@ -1887,7 +1887,7 @@
         "lastSync": "Dernière synchro : {{when}}",
         "summary": "{{contacts}} contacts dans {{books}} carnets",
         "syncFailed": "Échec de la dernière synchro : {{error}}",
-        "help": "Utilisez un mot de passe d'application Nextcloud, pas votre mot de passe de connexion — les utilisateurs SSO doivent en créer un dans Paramètres → Sécurité. Les contacts sont synchronisés à sens unique et en lecture seule dans MailFlow."
+        "help": "Utilisez un mot de passe d'application Nextcloud, pas votre mot de passe de connexion — les utilisateurs SSO doivent en créer un dans Paramètres → Sécurité. Les contacts sont synchronisés à sens unique et en lecture seule dans AMail."
       }
     },
     "ssoLinked": {
@@ -1909,11 +1909,11 @@
       "kofi": "Ko-fi",
       "githubSponsors": "GitHub Sponsors",
       "businessLicense": "Licence entreprise",
-      "sponsorBlurb": "MailFlow est développé et maintenu par une seule personne. Les parrainages financent le temps consacré aux correctifs, aux revues de code et aux nouvelles versions."
+      "sponsorBlurb": "AMail est développé et maintenu par une seule personne. Les parrainages financent le temps consacré aux correctifs, aux revues de code et aux nouvelles versions."
     },
     "businessNotice": {
-      "title": "Vous utilisez MailFlow en entreprise ?",
-      "body": "MailFlow est gratuit sous licence AGPL et développé par une seule personne. Nous demandons aux entreprises qui en dépendent d'acheter une licence entreprise, à 100 $ par instance et par an, hors taxes. C'est facultatif, et MailFlow ne vérifie rien.",
+      "title": "Vous utilisez AMail en entreprise ?",
+      "body": "AMail est gratuit sous licence AGPL et développé par une seule personne. Nous demandons aux entreprises qui en dépendent d'acheter une licence entreprise, à 100 $ par instance et par an, hors taxes. C'est facultatif, et AMail ne vérifie rien.",
       "learnMore": "Voir la licence entreprise",
       "haveOne": "Nous en avons une",
       "notBusiness": "Pas une entreprise",
@@ -1947,26 +1947,26 @@
     },
     "backup": {
       "title": "Sauvegarde et restauration",
-      "intro": "Une sauvegarde contient les données de ce MailFlow : utilisateurs, comptes de messagerie, règles, contacts, réglages, données des extensions et apprentissage antispam. Le courrier en cache est retéléchargé depuis vos serveurs de messagerie après une restauration, sauf si vous l'incluez. Le fichier ne contient pas ce qui est défini dans .env : un nouveau serveur a besoin de la même ENCRYPTION_KEY et, si vous les y avez définis, des mêmes clés VAPID et réglages de client OAuth.",
+      "intro": "Une sauvegarde contient les données de ce AMail : utilisateurs, comptes de messagerie, règles, contacts, réglages, données des extensions et apprentissage antispam. Le courrier en cache est retéléchargé depuis vos serveurs de messagerie après une restauration, sauf si vous l'incluez. Le fichier ne contient pas ce qui est défini dans .env : un nouveau serveur a besoin de la même ENCRYPTION_KEY et, si vous les y avez définis, des mêmes clés VAPID et réglages de client OAuth.",
       "sensitive": "Le fichier contient les empreintes des mots de passe, les liens d'invitation en attente et les identifiants de vos comptes. Les identifiants sont chiffrés avec l'ENCRYPTION_KEY de ce serveur ; le reste est lisible, tout comme chaque message si le courrier en cache est inclus. Conservez le fichier en lieu sûr. Il ne peut être restauré que sur un serveur utilisant la même clé.",
       "includeMail": "Inclure le courrier en cache",
       "includeMailDesc": "Enregistre aussi la copie locale de chaque message synchronisé, ce qui rend le fichier bien plus volumineux. Sans elle, une restauration retélécharge le courrier, et les messages non lus les plus récents de chaque boîte de réception arrivent comme du nouveau courrier : les règles de la boîte de réception s'y appliquent de nouveau, transferts compris. Ce choix s'applique à chaque sauvegarde jusqu'à ce que vous le changiez.",
       "includeMailSaveError": "Le réglage n'a pas pu être enregistré.",
       "create": "Télécharger la sauvegarde",
       "restoreTitle": "Restaurer une sauvegarde",
-      "restoreIntro": "La restauration remplace tous les utilisateurs, comptes, réglages et messages en cache de ce serveur par le contenu du fichier. MailFlow redémarre ensuite. Les personnes dont le compte ne figure pas dans la sauvegarde sont déconnectées, et les mots de passe deviennent ceux de la sauvegarde.",
-      "versionNote": "Une sauvegarde ne se restaure que sur une version de MailFlow ayant le même schéma de base de données que celle qui l'a créée. Si le schéma de cette version est plus récent, restaurez la sauvegarde sur la version qui l'a créée, puis mettez à jour.",
+      "restoreIntro": "La restauration remplace tous les utilisateurs, comptes, réglages et messages en cache de ce serveur par le contenu du fichier. AMail redémarre ensuite. Les personnes dont le compte ne figure pas dans la sauvegarde sont déconnectées, et les mots de passe deviennent ceux de la sauvegarde.",
+      "versionNote": "Une sauvegarde ne se restaure que sur une version de AMail ayant le même schéma de base de données que celle qui l'a créée. Si le schéma de cette version est plus récent, restaurez la sauvegarde sur la version qui l'a créée, puis mettez à jour.",
       "chooseFile": "Choisir un fichier de sauvegarde",
       "restore": "Restaurer…",
       "confirmWarn": "Tout le contenu de ce serveur sera remplacé par {{name}}. Cette action est irréversible.",
       "confirmYes": "Restaurer et redémarrer",
       "restoring": "Restauration… lignes écrites : {{rows}}",
-      "done": "Restauration terminée. MailFlow redémarre ; cette page se rechargera dès son retour.",
-      "restartTimeout": "MailFlow n'est pas revenu après deux minutes. Relancez-le, puis rechargez cette page.",
+      "done": "Restauration terminée. AMail redémarre ; cette page se rechargera dès son retour.",
+      "restartTimeout": "AMail n'est pas revenu après deux minutes. Relancez-le, puis rechargez cette page.",
       "failed": "La restauration a échoué : {{message}}",
       "downloadFailed": "La sauvegarde n'a pas pu démarrer.",
-      "connectionLost": "La connexion a été perdue pendant la restauration, son résultat est donc inconnu. Cette page se rechargera dès que MailFlow répondra de nouveau ; vérifiez alors que vos données sont bien celles restaurées.",
-      "tooLarge": "Le fichier dépasse la taille autorisée par le proxy placé devant MailFlow."
+      "connectionLost": "La connexion a été perdue pendant la restauration, son résultat est donc inconnu. Cette page se rechargera dès que AMail répondra de nouveau ; vérifiez alors que vos données sont bien celles restaurées.",
+      "tooLarge": "Le fichier dépasse la taille autorisée par le proxy placé devant AMail."
     },
     "plugins": {
       "title": "Extensions",
@@ -2203,20 +2203,20 @@
     "signIn": {
       "title": "Se reconnecter à Microsoft",
       "titleGoogle": "Se reconnecter à Google",
-      "body": "La connexion enregistrée par MailFlow pour ce compte ne fonctionne plus. Cela arrive après un changement de mot de passe, après une longue période sans utilisation ou lorsque l'accès a été retiré dans les paramètres de votre compte."
+      "body": "La connexion enregistrée par AMail pour ce compte ne fonctionne plus. Cela arrive après un changement de mot de passe, après une longue période sans utilisation ou lorsque l'accès a été retiré dans les paramètres de votre compte."
     },
     "appConfig": {
       "title": "La connexion de ce compte n'est pas configurée correctement",
-      "bodyUser": "Le fournisseur de messagerie a refusé l'application avec laquelle MailFlow se connecte. Demandez à votre administrateur de vérifier les paramètres de connexion.",
-      "bodyAdmin": "Le fournisseur de messagerie a refusé l'application avec laquelle MailFlow se connecte. Vérifiez ses paramètres dans Fournisseurs de messagerie. Les détails ci-dessous indiquent la réponse du fournisseur."
+      "bodyUser": "Le fournisseur de messagerie a refusé l'application avec laquelle AMail se connecte. Demandez à votre administrateur de vérifier les paramètres de connexion.",
+      "bodyAdmin": "Le fournisseur de messagerie a refusé l'application avec laquelle AMail se connecte. Vérifiez ses paramètres dans Fournisseurs de messagerie. Les détails ci-dessous indiquent la réponse du fournisseur."
     },
     "authFailed": {
       "title": "Le serveur a refusé le mot de passe",
       "body": "Le serveur de messagerie n'a pas accepté le nom d'utilisateur ou le mot de passe de ce compte. Si vous avez changé de mot de passe ou utilisez un mot de passe d'application, mettez-le à jour avec Modifier le compte."
     },
     "connection": {
-      "title": "MailFlow ne parvient pas à se connecter à ce compte",
-      "body": "MailFlow continue d'essayer de lui-même. Les détails ci-dessous indiquent la réponse du serveur."
+      "title": "AMail ne parvient pas à se connecter à ce compte",
+      "body": "AMail continue d'essayer de lui-même. Les détails ci-dessous indiquent la réponse du serveur."
     },
     "action": {
       "openOutlook": "Ouvrir Outlook.com",
@@ -2229,7 +2229,7 @@
     "signInDialog": {
       "title": "Se reconnecter",
       "body": "Connectez-vous en tant que {{email}} pour reconnecter ce compte.",
-      "success": "Connecté. MailFlow reconnecte ce compte.",
+      "success": "Connecté. AMail reconnecte ce compte.",
       "continueGoogle": "Continuer vers Google",
       "waitingGoogle": "Terminez la connexion sur la page Google, puis revenez ici."
     },
@@ -2273,28 +2273,28 @@
     "copied": "Copié",
     "waiting": "En attente de la fin de votre connexion sur la page de Microsoft…",
     "starting": "Obtention d'un code auprès de Microsoft…",
-    "checking": "Vérification que MailFlow peut accéder à votre boîte aux lettres…",
+    "checking": "Vérification que AMail peut accéder à votre boîte aux lettres…",
     "connected": "{{email}} est connecté. Vos e-mails se synchronisent.",
-    "stillConnecting": "Connecté en tant que {{email}}. MailFlow établit encore la connexion et continue d'essayer de lui-même. La liste des comptes indique quand il est prêt.",
+    "stillConnecting": "Connecté en tant que {{email}}. AMail établit encore la connexion et continue d'essayer de lui-même. La liste des comptes indique quand il est prêt.",
     "declined": "Vous avez annulé la connexion sur la page de Microsoft.",
     "expired": "Le code a expiré avant la fin de la connexion. Les codes sont valables 15 minutes.",
     "error": "La connexion Microsoft n'a pas fonctionné.",
     "newCode": "Obtenir un nouveau code",
     "startOver": "Recommencer",
     "done": "Terminé",
-    "finePrintShared": "Microsoft peut indiquer que MailFlow est une application non vérifiée. C'est normal : l'application partagée de MailFlow ne fait qu'identifier MailFlow auprès de Microsoft. Vous vous connectez sur la page de Microsoft, et Microsoft envoie l'accès directement à ce serveur.",
+    "finePrintShared": "Microsoft peut indiquer que AMail est une application non vérifiée. C'est normal : l'application partagée de AMail ne fait qu'identifier AMail auprès de Microsoft. Vous vous connectez sur la page de Microsoft, et Microsoft envoie l'accès directement à ce serveur.",
     "finePrintOwn": "Vous vous connectez sur la page de Microsoft, et Microsoft envoie l'accès directement à ce serveur.",
     "continueMicrosoft": "Continuer vers Microsoft",
     "redirectWaiting": "Terminez la connexion sur la page Microsoft qui s'est ouverte, puis revenez ici.",
     "useCode": "Utiliser un code à la place",
     "useRedirect": "Se connecter sur la page de Microsoft à la place",
     "back": "Retour",
-    "lost": "MailFlow a perdu la trace de cette connexion, par exemple parce que le serveur a redémarré. Si vous avez terminé la connexion sur la page de Microsoft, le compte est peut-être déjà dans votre liste.",
+    "lost": "AMail a perdu la trace de cette connexion, par exemple parce que le serveur a redémarré. Si vous avez terminé la connexion sur la page de Microsoft, le compte est peut-être déjà dans votre liste.",
     "checkAccounts": "Vérifier vos comptes"
   },
   "mailSignIn": {
     "title": "Fournisseurs de messagerie",
-    "description": "Comment MailFlow se connecte aux boîtes Microsoft et Google. C'est distinct de l'authentification unique (SSO), qui permet de se connecter à MailFlow lui-même. Chacun ajoute ses propres comptes dans Comptes > Ajouter un compte.",
+    "description": "Comment AMail se connecte aux boîtes Microsoft et Google. C'est distinct de l'authentification unique (SSO), qui permet de se connecter à AMail lui-même. Chacun ajoute ses propres comptes dans Comptes > Ajouter un compte.",
     "required": "Remplissez d'abord les champs obligatoires.",
     "redirectRequired": "Google a besoin d'un URI de redirection : celui enregistré sur le client OAuth, qui se termine par /oauth/google/callback.",
     "saved": "Enregistré.",
@@ -2302,12 +2302,12 @@
       "title": "Microsoft",
       "description": "Boîtes Outlook.com, Hotmail, Live, MSN et Microsoft 365",
       "personalTitle": "Comptes personnels (Outlook.com, Hotmail, Live, MSN)",
-      "statusShared": "Utilise l'application partagée de MailFlow",
+      "statusShared": "Utilise l'application partagée de AMail",
       "statusOwn": "Utilise votre propre application",
       "statusOff": "Désactivé",
-      "sharedSwitch": "Autoriser la connexion avec l'application partagée de MailFlow",
+      "sharedSwitch": "Autoriser la connexion avec l'application partagée de AMail",
       "sharedSwitchDesc": "Aucune configuration nécessaire. Les comptes déjà connectés continuent de fonctionner si vous la désactivez.",
-      "ownHandlesPersonal": "Votre propre application gère les comptes personnels, l'application partagée de MailFlow n'est donc pas utilisée.",
+      "ownHandlesPersonal": "Votre propre application gère les comptes personnels, l'application partagée de AMail n'est donc pas utilisée.",
       "workTitle": "Comptes professionnels et scolaires (Microsoft 365)",
       "workOff": "Non configuré",
       "setupToggle": "Configurer votre propre application Microsoft Entra"

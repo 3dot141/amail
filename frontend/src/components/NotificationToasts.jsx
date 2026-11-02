@@ -166,7 +166,7 @@ function ActionBar({ notification, onDismiss, isMobile }) {
         onClick={handleUndo}
         style={{
           background: 'var(--accent-dim)',
-          border: '1px solid rgba(124,106,247,0.3)',
+          border: '1px solid rgba(8,104,247,0.3)',
           borderRadius: 6,
           color: 'var(--accent)',
           fontSize: 12, fontWeight: 600,
@@ -174,7 +174,7 @@ function ActionBar({ notification, onDismiss, isMobile }) {
           cursor: 'pointer', flexShrink: 0,
           transition: 'background 0.12s',
         }}
-        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(124,106,247,0.25)'; }}
+        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(8,104,247,0.25)'; }}
         onMouseLeave={e => { e.currentTarget.style.background = 'var(--accent-dim)'; }}
       >
         {t('common.undo')}
@@ -291,12 +291,12 @@ function Toast({ notification, onDismiss, isMobile }) {
         <button
           onClick={handleUndo}
           style={{
-            background: 'var(--accent-dim)', border: '1px solid rgba(124,106,247,0.3)',
+            background: 'var(--accent-dim)', border: '1px solid rgba(8,104,247,0.3)',
             borderRadius: 5, color: 'var(--accent)', fontSize: 11, fontWeight: 600,
             padding: '3px 10px', cursor: 'pointer', flexShrink: 0,
             transition: 'background 0.12s',
           }}
-          onMouseEnter={e => { e.currentTarget.style.background = 'rgba(124,106,247,0.25)'; }}
+          onMouseEnter={e => { e.currentTarget.style.background = 'rgba(8,104,247,0.25)'; }}
           onMouseLeave={e => { e.currentTarget.style.background = 'var(--accent-dim)'; }}
         >
           {t('common.undo')}

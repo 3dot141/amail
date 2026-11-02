@@ -1,4 +1,4 @@
-package sh.mailflow.app;
+package sh.amail.app;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -55,14 +55,14 @@ import org.json.JSONObject;
     }
 )
 public class MailFlowNativePlugin extends Plugin {
-    static final String ACTION_OPEN_MESSAGE = "sh.mailflow.app.OPEN_MESSAGE";
-    static final String ACTION_REPLY_MESSAGE = "sh.mailflow.app.REPLY_MESSAGE";
-    static final String ACTION_DELETE_MESSAGE = "sh.mailflow.app.DELETE_MESSAGE";
-    static final String ACTION_STAR_MESSAGE = "sh.mailflow.app.STAR_MESSAGE";
-    static final String ACTION_COMPOSE = "sh.mailflow.app.COMPOSE";
-    static final String ACTION_SYNC = "sh.mailflow.app.SYNC";
-    static final String ACTION_INSTALL_UPDATE = "sh.mailflow.app.INSTALL_UPDATE";
-    private static final String EXTRA_INTENT_SECRET = "sh.mailflow.app.INTENT_SECRET";
+    static final String ACTION_OPEN_MESSAGE = "sh.amail.app.OPEN_MESSAGE";
+    static final String ACTION_REPLY_MESSAGE = "sh.amail.app.REPLY_MESSAGE";
+    static final String ACTION_DELETE_MESSAGE = "sh.amail.app.DELETE_MESSAGE";
+    static final String ACTION_STAR_MESSAGE = "sh.amail.app.STAR_MESSAGE";
+    static final String ACTION_COMPOSE = "sh.amail.app.COMPOSE";
+    static final String ACTION_SYNC = "sh.amail.app.SYNC";
+    static final String ACTION_INSTALL_UPDATE = "sh.amail.app.INSTALL_UPDATE";
+    private static final String EXTRA_INTENT_SECRET = "sh.amail.app.INTENT_SECRET";
     private static final String TAG = "MailFlowUpdater";
     private static final String CHANNEL_NEW_MAIL = "mailflow_new_mail";
     private static final String CHANNEL_UPDATES = "mailflow_updates";

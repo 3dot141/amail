@@ -1,4 +1,4 @@
-// MailFlow Service Worker — handles Web Push and notification clicks.
+// AMail Service Worker — handles Web Push and notification clicks.
 // Intentionally minimal: no fetch interception, no caching strategy.
 // The sole purpose of this SW is push delivery and notification click handling.
 
@@ -25,7 +25,7 @@ self.addEventListener('push', (event) => {
   }
 
   const {
-    title       = 'MailFlow',
+    title       = 'AMail',
     body        = 'New message',
     icon        = '/icon-512.png',
     badge       = '/badge-96.png',
@@ -63,7 +63,7 @@ self.addEventListener('push', (event) => {
             icon,
             badge,
             data:  { url },
-            // Replace any existing MailFlow notification so rapid arrivals
+            // Replace any existing AMail notification so rapid arrivals
             // don't stack unboundedly in the notification center.
             tag:      'mailflow-new-mail',
             renotify: true,

@@ -788,7 +788,7 @@ describe('dedupeByIdentity: independent deliveries to different accounts (#476)'
   // reason is that each copy is a separate mailbox item carrying its own \Seen flag, so
   // collapsing them forces a choice about whose read state the surviving row represents.
   //
-  // MailFlow also summed the unread badge across accounts without deduplicating it, so the
+  // AMail also summed the unread badge across accounts without deduplicating it, so the
   // count said two while the list showed one, and reading the visible copy left a phantom
   // unread that had no row in the unified list.
 

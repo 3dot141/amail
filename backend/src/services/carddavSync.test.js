@@ -33,8 +33,8 @@ function personalRow(contact = alice, vcard = generateVCard(contact)) {
   };
 }
 
-// The same Alice as a phone stored her through MailFlow's CardDAV server, with
-// properties MailFlow does not model.
+// The same Alice as a phone stored her through AMail's CardDAV server, with
+// properties AMail does not model.
 const phoneCard = [
   'BEGIN:VCARD', 'VERSION:3.0', 'PRODID:-//Apple Inc.//iOS 18.0//EN', 'UID:local-uid',
   'N:Smith;Alice;;;', 'FN:Alice', 'ORG:Acme', 'EMAIL;TYPE=HOME:alice@example.com',
@@ -256,7 +256,7 @@ describe('syncUser in merge mode', () => {
   });
 
   it.each([
-    ['as MailFlow generated it', generateVCard(alice)],
+    ['as AMail generated it', generateVCard(alice)],
     ['as a phone stored it', phoneCard],
     ['as a phone stored it under a UID other than its file name', phoneCard.replace('UID:local-uid', 'UID:5F2C9E1A:ABPerson')],
     ['under a UID the remote card has too', generateVCard({ ...alice, uid: 'nc-alice' }), 'nc-alice'],

@@ -53,7 +53,7 @@ export default function TodoistTaskModal({ message, onClose }) {
       // moved to another folder (the row's UUID is regenerated on move/resync). Fall back to
       // the UUID for messages with no Message-ID. Both resolve via /resolve-message (#270).
       const linkRef = message?.message_id || message?.id;
-      const mailflowLink = linkRef ? `[View in MailFlow](${window.location.origin}/?m=${encodeURIComponent(linkRef)})` : '';
+      const mailflowLink = linkRef ? `[View in AMail](${window.location.origin}/?m=${encodeURIComponent(linkRef)})` : '';
       const fullDescription = [description.trim(), mailflowLink].filter(Boolean).join('\n\n');
       const task = await api.todoist.createTask({
         content: title.trim(),
@@ -197,7 +197,7 @@ export default function TodoistTaskModal({ message, onClose }) {
                           style={{
                             padding: '4px 10px', borderRadius: 20, fontSize: 12,
                             border: '1px solid ' + (active ? 'var(--accent)' : 'var(--border)'),
-                            background: active ? 'rgba(99,102,241,0.15)' : 'var(--bg-tertiary)',
+                            background: active ? 'rgba(8,104,247,0.15)' : 'var(--bg-tertiary)',
                             color: active ? 'var(--accent)' : 'var(--text-secondary)',
                             cursor: 'pointer', transition: 'all 0.1s',
                           }}

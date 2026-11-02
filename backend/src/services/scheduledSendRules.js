@@ -112,7 +112,7 @@ export function recoveryAction(row) {
 // 4 h 21 min, so they alone never reach the grace, and what the user does to send it now (Send
 // now, Resume, Send anyway, a new time) sets send_at, so holding it again cannot loop. `retried`:
 // the last attempt ended in a backoff retry, which is why it is late. `dueBeforeStart`: its time
-// came before this sender started, so MailFlow was offline then. Otherwise a late message waited
+// came before this sender started, so AMail was offline then. Otherwise a late message waited
 // in the queue, and nothing may tell the user it was offline.
 export function lateness({ lagMs, retried = false, dueBeforeStart }) {
   const late = lagMs > LATE_AFTER_MS;
@@ -141,7 +141,7 @@ const FAILED_TEXT = {
   alias_missing: 'The address it was to be sent from no longer exists.',
   decrypt_failed: 'It could not be decrypted on this server.',
   account_missing: 'Its account no longer exists.',
-  gave_up: 'The mail server kept failing, so MailFlow stopped trying.',
+  gave_up: 'The mail server kept failing, so AMail stopped trying.',
   smtp_auth_disabled: 'Microsoft has turned off sending from mail apps (SMTP) for this account. You can still send from Outlook on the web. For a work or school account, your admin can turn it back on.',
 };
 const PAUSED_TEXT = {
@@ -165,10 +165,10 @@ function dueText(sendAt, timeZone) {
 export function pushFor({ id, status, failureCode, pauseReason, subject, sendAt, timeZone, offline = false }) {
   let body;
   if (status === 'uncertain') {
-    body = 'MailFlow stopped while sending this. It may or may not have been delivered. Check your Sent folder.';
+    body = 'AMail stopped while sending this. It may or may not have been delivered. Check your Sent folder.';
   } else if (status === 'paused' && pauseReason === 'overdue') {
     body = offline
-      ? `Not sent: was scheduled for ${dueText(sendAt, timeZone)}. MailFlow was offline. Open to send or reschedule.`
+      ? `Not sent: was scheduled for ${dueText(sendAt, timeZone)}. AMail was offline. Open to send or reschedule.`
       : `Not sent: was scheduled for ${dueText(sendAt, timeZone)} and is more than 6 hours late. Open to send or reschedule.`;
   } else if (status === 'paused') {
     body = `Not sent: ${PAUSED_TEXT[pauseReason] || 'It is paused.'}`;

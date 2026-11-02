@@ -575,7 +575,7 @@ function ScheduledRow({
       : row.status === 'cancelled' ? t(reasonId, { when: formatScheduledTime(row.restoreUntil, { t, now }) })
         : t(reasonId);
   const notes = sentNotes(row, { t, now });
-  // The server's reply, or MailFlow's explanation; never "try again" beside an uncertain message.
+  // The server's reply, or AMail's explanation; never "try again" beside an uncertain message.
   const detail = row.failureDetail && (reasonId || isRetrying(row))
     && !(row.status === 'uncertain' && /try again/i.test(row.failureDetail)) ? row.failureDetail : null;
   const serverReply = detail && /^[245]\d\d[\s-]/.test(detail);

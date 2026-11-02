@@ -2,7 +2,7 @@
 // A home-screen app on iOS has no swipe-back of its own. Swiping between messages is native
 // scrolling (components/SwipePager.jsx); this is the edge only.
 //
-// It listens in MailFlow's own page, on the pane, and never inside an email frame: WebKit runs no
+// It listens in AMail's own page, on the pane, and never inside an email frame: WebKit runs no
 // listener inside a sandboxed frame without scripts. Over the email, the edge is SwipePager's strip
 // ([data-swipe-edge]), which sits above the frame; elsewhere (the top bar) it is the first EDGE px.
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';

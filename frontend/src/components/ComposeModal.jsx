@@ -805,7 +805,7 @@ export default function ComposeModal() {
     if (quotedHtmlRef.current && quotedBodyHtml) {
       // Strip <style> blocks — marketing emails use global rules like "div { margin: 0 !important }"
       // that leak out of contentEditable into the app UI. Inline style attributes are preserved.
-      // Images load only through MailFlow (utils/appEmailHtml.js): this is the app's page, not the
+      // Images load only through AMail (utils/appEmailHtml.js): this is the app's page, not the
       // email frame, and its CSP would let a sender's image through.
       quotedHtmlRef.current.innerHTML = sanitizeEmailForApp(quotedBodyHtml, { FORBID_TAGS: ['style'] });
     }
@@ -1109,7 +1109,7 @@ export default function ComposeModal() {
       cc: ccFinal,
       bcc: bccFinal,
       subject,
-      // Images shown through MailFlow's proxy go out as the email's own references.
+      // Images shown through AMail's proxy go out as the email's own references.
       body: plaintextEmail ? bodyToSend : unproxyImages(bodyToSend),
       bodyIsHtml: !plaintextEmail,
       ...(quotedBody ? { quotedBody } : {}),
@@ -1662,7 +1662,7 @@ export default function ComposeModal() {
   // A snapshot's fields as /draft takes them.
   const draftFields = value => ({
     to: value.to, cc: value.cc, bcc: value.bcc, subject: value.subject,
-    // Images shown through MailFlow's proxy are saved as the email's own references.
+    // Images shown through AMail's proxy are saved as the email's own references.
     body: value.bodyIsHtml ? unproxyImages(value.body) : value.body, bodyIsHtml: value.bodyIsHtml,
     ...(composeData?.inReplyTo ? { inReplyTo: composeData.inReplyTo } : {}),
     ...(composeData?.references ? { references: composeData.references } : {}),

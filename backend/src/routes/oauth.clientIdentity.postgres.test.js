@@ -30,7 +30,7 @@ vi.mock('jose', () => ({
   createRemoteJWKSet: vi.fn(() => ({})),
   jwtVerify: vi.fn(async () => ({ payload: { email: 'me@outlook.com', name: 'Me' } })),
 }));
-// A stand-in for MailFlow's registered app, so the test never depends on the shipped ID.
+// A stand-in for AMail's registered app, so the test never depends on the shipped ID.
 vi.mock('../services/microsoftBuiltinApp.js', () => ({ MAILFLOW_MS_CLIENT_ID: 'builtin-app-id' }));
 
 import express from 'express';

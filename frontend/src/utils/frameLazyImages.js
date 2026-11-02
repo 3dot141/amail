@@ -4,7 +4,7 @@
 // screen waited behind images the reader might never scroll to (a 26-image newsletter: first
 // screen 4.9 s, all images 7 s, on a slow 4G connection).
 //
-// So MailFlow does it from its own page. The frame's HTML (utils/emailFrameDoc.js) carries the
+// So AMail does it from its own page. The frame's HTML (utils/emailFrameDoc.js) carries the
 // image proxy's images after the first few with their address moved aside (data-mf-src); the page
 // watches where they are against the reader's own viewport, and puts the address back when one
 // comes within a screen or two of view.

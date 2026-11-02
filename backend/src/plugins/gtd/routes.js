@@ -348,7 +348,7 @@ router.post('/classify/undo', async (req, res) => {
 // its message for a while after another client moves it, so a copy counts only once the server
 // confirms it; a failed check counts as no copy, which keeps the mail. Without a Message-ID the
 // other copies cannot be found, so it answers no. On Gmail it is always yes: a GTD folder is a
-// label, and removing it leaves the message in All Mail, which MailFlow does not sync.
+// label, and removing it leaves the message in All Mail, which AMail does not sync.
 async function hasSurvivingCopy(account, msg, removing) {
   return await findSurvivingCopy(account, msg, removing) === true;
 }

@@ -1,15 +1,15 @@
 // Images in an email body shown dark (#228).
 //
 // Images are never recolored. Two kinds still need help on a dark background:
-//   - MailFlow's own placeholders for blocked remote images (backend emailSanitizer.js
+//   - AMail's own placeholders for blocked remote images (backend emailSanitizer.js
 //     blockRemoteImages): light gray boxes that would glare. Drawn dark whenever the body is.
 //   - Images drawn dark on a transparent background (a logo's black lettering, a dark icon) would
 //     vanish into the dark background. Such an image gets a light backing, as Apple Mail and
-//     Gmail give them. Only when MailFlow recolored the email: a sender's own dark design handles
+//     Gmail give them. Only when AMail recolored the email: a sender's own dark design handles
 //     its own images.
 // Telling the second kind needs the image's pixels, which a page can only read for images from its
 // own origin: inline images (cid:, delivered as data: URIs) qualify; remote ones do not, until
-// MailFlow serves them itself.
+// AMail serves them itself.
 //
 // Every change is an inline !important style whose old value is kept, so it is undone exactly.
 

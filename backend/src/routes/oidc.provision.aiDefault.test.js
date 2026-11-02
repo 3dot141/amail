@@ -78,7 +78,7 @@ beforeEach(() => {
 
 const get = (path, cookie) => realFetch(`${base}${path}`, { headers: cookie ? { cookie } : {}, redirect: 'manual' });
 
-// Runs an SSO sign-in for an identity MailFlow has never seen, and returns the new user's ai_enabled.
+// Runs an SSO sign-in for an identity AMail has never seen, and returns the new user's ai_enabled.
 async function provision() {
   clientQueries = [];
   const start = await get('/auth/oidc/idp/start');

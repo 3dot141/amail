@@ -620,8 +620,8 @@ describe('DELETE /api/gtd/classify — remove a GTD label', () => {
     expect(imapManager.removeMessageCopy).not.toHaveBeenCalled();
   });
 
-  // Gmail: removing a GTD label leaves the message in All Mail, which MailFlow does not sync, so
-  // its GTD rows are often the only ones MailFlow has.
+  // Gmail: removing a GTD label leaves the message in All Mail, which AMail does not sync, so
+  // its GTD rows are often the only ones AMail has.
   it('removes the label on Gmail even when it holds the only synced copy', async () => {
     stubQueries({ msg: { ...inboxMsg, folder: 'Todo' }, folders: ['Todo'] });
     imapManager.isLabelStore.mockReturnValue(true);

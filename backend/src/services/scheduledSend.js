@@ -510,7 +510,7 @@ export class ScheduledSender {
       if (!row) return null;
       // failure_code is still the last attempt's: set by a backoff retry, it is why this is late.
       // Its time is send_at, not due_at: recovery puts a send a crash cut off back due at once,
-      // and it is late because MailFlow was down.
+      // and it is late because AMail was down.
       Object.assign(row, lateness({
         lagMs: Number(row.lag_ms), dueBeforeStart: row.due_before_start,
         retried: !row.first_attempt && RETRY_CODES.has(row.failure_code),

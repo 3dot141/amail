@@ -248,38 +248,21 @@ export default function LoginPage() {
   const showToggle = !internalAuthDisabled && (mode === 'login' ? canRegister : mode === 'register');
 
   return (
-    <div style={{
-      minHeight: 'var(--app-height, 100svh)', display: 'flex', alignItems: 'center',
-      justifyContent: 'center', background: 'var(--bg-primary)',
-      padding: 24,
-    }}>
-      {/* Background decoration */}
-      <div style={{ position: 'fixed', inset: 0, overflow: 'hidden', pointerEvents: 'none', zIndex: 0 }}>
-        <div style={{
-          position: 'absolute', top: '-20%', left: '60%',
-          width: 600, height: 600, borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(124,106,247,0.08) 0%, transparent 70%)',
-        }} />
-        <div style={{
-          position: 'absolute', bottom: '-10%', left: '-10%',
-          width: 400, height: 400, borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(124,106,247,0.05) 0%, transparent 70%)',
-        }} />
-      </div>
-
-      <div style={{ position: 'relative', zIndex: 1, width: '100%', maxWidth: 380 }}>
-        {/* Logo */}
-        <div style={{ marginBottom: 40, textAlign: 'center' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 8 }}>
-            <LogoMark size={44} />
-            <span style={{ display: 'flex', alignItems: 'baseline' }}>
-              <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 30, fontWeight: 700, color: 'var(--text-primary)', letterSpacing: '-0.03em' }}>Mail</span>
-              <span style={{ fontFamily: "'Syne', sans-serif", fontSize: 30, fontWeight: 600, color: 'var(--accent)', letterSpacing: '-0.03em' }}>Flow</span>
-            </span>
-          </div>
-          <p style={{ color: 'var(--text-tertiary)', fontSize: 14, margin: 0 }}>{t('login.tagline')}</p>
+    <div className="login-shell">
+      <aside className="login-brand">
+        <div style={{ display: 'flex', alignItems: 'center', gap: 11 }}>
+          <LogoMark size={34} />
+          <span className="brand-word">AMail</span>
         </div>
+        <div>
+          <h1>Your unified inbox.</h1>
+          <p>Every account, one calm place. Self-hosted, fast, and yours to keep.</p>
+        </div>
+        <div className="brand-foot"><span>Self-hosted · AMail</span><span>Mail</span></div>
+      </aside>
 
+      <main className="login-form">
+        <div style={{ width: '100%', maxWidth: 380 }}>
         {/* Card */}
         <div style={{
           background: 'var(--bg-secondary)', border: '1px solid var(--border)',
@@ -991,7 +974,8 @@ export default function LoginPage() {
             </button>
           </p>
         )}
-      </div>
+        </div>
+      </main>
     </div>
   );
 }

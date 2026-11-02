@@ -417,7 +417,7 @@ function fetchWithTimeout(promise, ms) {
   return Promise.race([promise, timeout]).finally(() => clearTimeout(timer));
 }
 
-// The Bcc MailFlow recorded for a message you sent or a draft you saved (#585). Received mail has
+// The Bcc AMail recorded for a message you sent or a draft you saved (#585). Received mail has
 // none stored, so it shows none.
 const bccOf = (message) => (Array.isArray(message.bcc_addresses) ? message.bcc_addresses : []);
 
@@ -568,7 +568,7 @@ router.get('/messages/:id/body', async (req, res) => {
     // Apply remote-image blocking at response time — never write the blocked variant
     // back to the DB so the canonical cached HTML always has images intact.
     const skipBlocking = req.query.remoteImages === '1';
-    // The settled marker stays in the cache (html, written back above); it never leaves MailFlow.
+    // The settled marker stays in the cache (html, written back above); it never leaves AMail.
     const shown = withoutCidMarker(html);
     let responseHtml = shown;
     let hasBlockedRemoteImages = false;
@@ -583,7 +583,7 @@ router.get('/messages/:id/body', async (req, res) => {
       }
     }
     // Remote images allowed for this message load through the image proxy (services/imageProxy.js),
-    // and the email frame then allows images from MailFlow alone.
+    // and the email frame then allows images from AMail alone.
     const remoteImagesProxied = !remoteImagesBlocked;
     const imageStats = {};
     if (remoteImagesProxied && shown) responseHtml = proxyRemoteImages(shown, (raw, width) => imageProxyPath(id, raw, width), imageStats);
@@ -676,11 +676,11 @@ router.get('/messages/:id/body', async (req, res) => {
     // the account is busy, the request is worth retrying, and nothing is broken.
     // The provider itself is refusing additional connections (Yahoo's per-account session
     // ceiling, #474). Distinct from poolExhausted below, which is OUR budget: here nothing
-    // MailFlow does right now will make the request succeed, so say what is happening and
-    // that MailFlow is already backing off, instead of the raw server string.
+    // AMail does right now will make the request succeed, so say what is happening and
+    // that AMail is already backing off, instead of the raw server string.
     if (err.providerRefusing || isConnectionRefusal(msg)) {
       return res.status(503).json({
-        error: 'The mail server is limiting connections for this account. MailFlow is backing off and will retry automatically; please try again shortly.',
+        error: 'The mail server is limiting connections for this account. AMail is backing off and will retry automatically; please try again shortly.',
         providerLimited: true,
       });
     }
@@ -743,7 +743,7 @@ router.get('/messages/:id/headers', async (req, res) => {
 
 // Bcc recipients of a draft, for reopening it in the composer. A draft's Bcc exists only in its own
 // headers and saving the reopened draft expunges that copy, so failing to read it has to be an
-// error, never an empty list: an empty list is what erased it. Drafts MailFlow saved carry it in
+// error, never an empty list: an empty list is what erased it. Drafts AMail saved carry it in
 // bcc_addresses; anything else (NULL) is read from the copy on the server.
 router.get('/messages/:id/bcc', async (req, res) => {
   const { id } = req.params;
@@ -904,7 +904,7 @@ router.get('/messages/:id/attachments/:part', async (req, res) => {
 });
 
 // The image proxy (services/imageProxy.js): one remote image of one of the user's messages,
-// fetched by MailFlow. `u` is the reference exactly as the message's HTML writes it, and only a
+// fetched by AMail. `u` is the reference exactly as the message's HTML writes it, and only a
 // reference that HTML holds is fetched, so this cannot fetch anything else. `w` is the width the
 // email shows it at, which it is fitted to (services/imageShrink.js).
 //
@@ -1199,7 +1199,7 @@ router.post('/folders', async (req, res) => {
   // delimiter and namespace, so a parent stored in native form (INBOX.Foo)
   // plus a new leaf lands at INBOX.Foo.Bar on a dot-delimited server. The raw
   // mailboxCreate this replaces ignored both, so a folder created through
-  // MailFlow could be stored under a path the server never had — and creating
+  // AMail could be stored under a path the server never had — and creating
   // a subfolder beneath such a ghost silently vanished on the next
   // folder-structure sync.
   const requested = parentPath ? `${parentPath}/${name.trim()}` : name.trim();
@@ -2178,7 +2178,7 @@ export const LIVE_SNOOZE_SQL = `EXISTS (
 // Snoozing a single message doesn't work on Gmail: Gmail groups the inbox by
 // conversation, so moving one message to Snoozed only strips \Inbox from that
 // message — its thread siblings keep \Inbox and the whole conversation stays in
-// the inbox (#271). MailFlow's own inbox is thread-grouped too. So we snooze the
+// the inbox (#271). AMail's own inbox is thread-grouped too. So we snooze the
 // entire conversation, but bounded to the RFC 5322 reply chain (Message-ID /
 // In-Reply-To / References links) rather than thread_id: thread_id falls back to
 // subject grouping and can lump hundreds of unrelated messages together (e.g.

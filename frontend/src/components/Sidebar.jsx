@@ -482,7 +482,7 @@ export default function Sidebar() {
     setHiddenFolders(updated);
   }, [hiddenFolders, setHiddenFolders]);
 
-  // Keep a hidden folder hidden under the name MailFlow renamed it to, and forget one MailFlow
+  // Keep a hidden folder hidden under the name AMail renamed it to, and forget one AMail
   // deleted, so a new folder made later with the same name is not born hidden (#694).
   const moveHiddenFolder = useCallback((accountId, oldPath, newPath) => {
     const all = useStore.getState().hiddenFolders;
@@ -886,18 +886,18 @@ export default function Sidebar() {
               <span style={{
                 fontFamily: "'Syne', sans-serif",
                 fontSize: 17, fontWeight: 700,
-                color: 'var(--text-primary)',
+                color: 'var(--accent)',
                 letterSpacing: '-0.02em', whiteSpace: 'nowrap',
               }}>
-                Mail
+                A
               </span>
               <span style={{
                 fontFamily: "'Syne', sans-serif",
                 fontSize: 17, fontWeight: 600,
-                color: 'var(--accent)',
+                color: 'var(--text-primary)',
                 letterSpacing: '-0.02em', whiteSpace: 'nowrap',
               }}>
-                Flow
+                Mail
               </span>
             </span>
           </div>

@@ -2,9 +2,9 @@
 //
 // The frame always renders the email as sent first (utils/emailFrameDoc.js). Showing it dark
 // measures that rendering's text, then tries, in order:
-//   1. 'sender'   the sender's own dark design, when the email carries one: MailFlow's dark styles
+//   1. 'sender'   the sender's own dark design, when the email carries one: AMail's dark styles
 //                 plus their @media (prefers-color-scheme: dark) CSS
-//   2. 'recolor'  MailFlow's own recoloring (utils/darkRecolor.js)
+//   2. 'recolor'  AMail's own recoloring (utils/darkRecolor.js)
 // and keeps the first that leaves every piece of text that read as sent still readable
 // (utils/emailContrast.js compareWithLight). If neither does, the email is put back as sent and
 // the outcome is 'light': a wrong guess costs a light email, never unreadable text.
@@ -40,7 +40,7 @@ function setColorScheme(doc, value) {
   if (meta) meta.setAttribute('content', value);
 }
 
-// MailFlow's dark styles, with the sender's dark design on top or ('naive') without it.
+// AMail's dark styles, with the sender's dark design on top or ('naive') without it.
 function switchStyles(doc, withSender) {
   setMedia(doc, FRAME_STYLE.light, false);
   setMedia(doc, FRAME_STYLE.dark, true);
@@ -76,7 +76,7 @@ function withoutTransitions(doc, fn) {
 
 // Jumps every running CSS transition in `doc` to its end, so what is measured next is what is
 // shown. Asking for the document's animations also brings its styles up to date, which is what
-// starts any transition a change just caused. CSS animations (@keyframes) are left alone: MailFlow's
+// starts any transition a change just caused. CSS animations (@keyframes) are left alone: AMail's
 // colors are !important, which animations cannot override.
 function finishTransitions(doc) {
   for (const animation of doc.getAnimations?.() ?? []) {
@@ -91,8 +91,8 @@ export const SENDER_MAX_BRIGHT = 0.25;
 const hasSenderDesign = (doc) => Boolean(doc.getElementById(FRAME_STYLE.sender)?.textContent.trim());
 
 // Each way of showing it dark: makes its changes and returns how to undo them, and what it did to
-// images (utils/darkImages.js). MailFlow's blocked-image placeholders are drawn dark either way;
-// images that would vanish get a backing only when MailFlow recolored the email.
+// images (utils/darkImages.js). AMail's blocked-image placeholders are drawn dark either way;
+// images that would vanish get a backing only when AMail recolored the email.
 const both = (undoColors, images) => ({ undo: () => { images.undo(); undoColors(); }, images: images.counts });
 const KINDS = {
   sender: (doc) => both(switchStyles(doc, true), darkenImages(doc)),

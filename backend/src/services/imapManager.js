@@ -1163,7 +1163,7 @@ function findPart(node, partNum) {
   return null;
 }
 
-// A forwarded message attached as a file ("Forward as attachment" in Gmail, Outlook or MailFlow) is
+// A forwarded message attached as a file ("Forward as attachment" in Gmail, Outlook or AMail) is
 // a message/rfc822 part, and imapflow gives it the embedded message's structure as children. Walking
 // into those children filed the forwarded message's parts as the outer message's own: the .eml never
 // appeared, its files looked attached directly, and its text could replace the real body. Only a
@@ -6543,7 +6543,7 @@ export class ImapManager {
   }
 
   // Whether the account's folders are label memberships (Gmail): removing a message from one
-  // drops that label and leaves the message in All Mail, which MailFlow does not sync.
+  // drops that label and leaves the message in All Mail, which AMail does not sync.
   isLabelStore(account) {
     return providerProfile(account).labelStore === true;
   }

@@ -8,7 +8,7 @@
 // measure first. For that the document carries two more style elements, switched off
 // (media="not all") until used:
 //   FRAME_STYLE.dark    the theme's colors, for an email shown with its sender's own dark design
-//   FRAME_STYLE.sender  that dark design (the body route's darkCss), after MailFlow's styles so it
+//   FRAME_STYLE.sender  that dark design (the body route's darkCss), after AMail's styles so it
 //                       wins where it sets something
 // The light styles sit in their own element so they can be switched off in turn. Their content
 // and position are unchanged: after the email's HTML, so they win the source-order tiebreak.
@@ -29,8 +29,8 @@ export function usableDarkCss(darkCss) {
 }
 
 // `remoteImagesBlocked`: the body was served with remote images blocked, so the frame forbids
-// remote loads outright; `remoteImagesProxied`: its images come through MailFlow's image proxy, so
-// the frame loads images from MailFlow alone (utils/remoteImagePolicy.js). `docKey` (digits) marks
+// remote loads outright; `remoteImagesProxied`: its images come through AMail's image proxy, so
+// the frame loads images from AMail alone (utils/remoteImagePolicy.js). `docKey` (digits) marks
 // this document as the one its frame is waiting for (MessageBodyView): the previous email's is
 // still there for a moment after it changes.
 export function buildFrameDoc({ html, palette = DARK_DEFAULTS, darkCss = '', remoteImagesBlocked = false, remoteImagesProxied = false, docKey = '' }) {
@@ -78,7 +78,7 @@ export function buildFrameDoc({ html, palette = DARK_DEFAULTS, darkCss = '', rem
         a { color: #6366f1; }
         blockquote { border-left: 3px solid #ddd; margin: 0; padding-left: 12px; color: #555; }
       </style><style id="${FRAME_STYLE.dark}" media="not all">
-        /* MailFlow's dark background is not !important, so the sender's dark design can set its own. */
+        /* AMail's dark background is not !important, so the sender's dark design can set its own. */
         body { background-color: ${palette.background}; color-scheme: dark; color: ${palette.text}; }
         a { color: ${palette.link}; }
         blockquote { border-left: 3px solid ${palette.border}; margin: 0; padding-left: 12px; color: ${palette.muted}; }

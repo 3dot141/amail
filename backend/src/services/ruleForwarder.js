@@ -7,7 +7,7 @@ import { createAccountSmtpTransport } from './smtpTransport.js';
 import { MAILER_ID } from './mailerIdentity.js';
 
 const MAX_ATTACHMENT_BYTES = 25 * 1024 * 1024;
-const LOOP_HEADER = 'X-MailFlow-Loop';
+const LOOP_HEADER = 'X-AMail-Loop';
 // The most tokens a forward carries: its own and the newest nine it received.
 const MAX_LOOP_TOKENS = 10;
 
@@ -189,7 +189,7 @@ function ensureAttachmentLimit(attachments) {
   }
 }
 
-// The email as it leaves MailFlow. `html` is either raw from the server or the stored body, which is
+// The email as it leaves AMail. `html` is either raw from the server or the stored body, which is
 // already sanitized and ends with the sender's dark CSS switched off (media="not all"). Sanitizing
 // that again drops the switch, since <style> keeps no attributes, and the dark rules would go out
 // active; so a stored dark block is taken off first, and the one sanitizing makes is taken off after.

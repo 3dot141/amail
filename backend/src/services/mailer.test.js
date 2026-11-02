@@ -19,7 +19,7 @@ const CONFIG = {
   tls: 'STARTTLS',
   user: 'system@internal.lan',
   pass: 'ENCRYPTED',
-  fromName: 'MailFlow',
+  fromName: 'AMail',
   fromEmail: 'system@internal.lan',
 };
 

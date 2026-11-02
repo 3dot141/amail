@@ -1,6 +1,6 @@
 // Stop-word lists for the antispam tokenizer (v0.2).
 //
-// One set per language, matching the 7 UI locales MailFlow ships
+// One set per language, matching the 7 UI locales AMail ships
 // (en, it, de, es, fr, ru, zhCN). Words here are excluded from the
 // bag-of-words features because they carry no discriminative power
 // for spam classification.
