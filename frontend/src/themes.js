@@ -601,32 +601,10 @@ export const THEMES = {
   },
 };
 
-// ── Color helpers ────────────────────────────────────────────────────────────
+// ── Favicon artwork ──────────────────────────────────────────────────────────
 
-function hexToRgb(hex) {
-  return [
-    parseInt(hex.slice(1, 3), 16),
-    parseInt(hex.slice(3, 5), 16),
-    parseInt(hex.slice(5, 7), 16),
-  ];
-}
-
-function lighten(hex, t) {
-  return '#' + hexToRgb(hex)
-    .map(c => Math.min(255, Math.round(c + (255 - c) * t)).toString(16).padStart(2, '0'))
-    .join('');
-}
-
-function darken(hex, t) {
-  return '#' + hexToRgb(hex)
-    .map(c => Math.round(c * (1 - t)).toString(16).padStart(2, '0'))
-    .join('');
-}
-
-function buildFaviconSvg(accent, count = 0) {
-  const light = lighten(accent, 0.25);
-  const dark  = darken(accent, 0.30);
-  const [dr, dg, db] = hexToRgb(dark);
+// Brand artwork, fixed across themes: blue tile with a white envelope.
+function buildFaviconSvg(count = 0) {
 
   let badge = '';
   if (count > 0) {
@@ -643,25 +621,24 @@ function buildFaviconSvg(accent, count = 0) {
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="${light}"/>
-      <stop offset="100%" stop-color="${dark}"/>
+      <stop offset="0%" stop-color="#1E9BFF"/>
+      <stop offset="55%" stop-color="#0868F7"/>
+      <stop offset="100%" stop-color="#0043D6"/>
     </linearGradient>
-    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="rgba(255,255,255,0.14)"/>
-      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    <linearGradient id="env" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F4FAFF"/>
+      <stop offset="100%" stop-color="#CFE9FF"/>
     </linearGradient>
-    <clipPath id="ec">
-      <rect x="5" y="10.5" width="22" height="15" rx="2.5"/>
-    </clipPath>
+    <radialGradient id="glow" cx="18%" cy="12%" r="72%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
   </defs>
   <rect width="32" height="32" rx="7.5" fill="url(#bg)"/>
-  <rect width="32" height="16" rx="7.5" fill="url(#shine)"/>
-  <rect x="5" y="11.5" width="22" height="15" rx="2.5" fill="rgba(0,0,0,0.18)"/>
-  <rect x="5" y="10.5" width="22" height="15" rx="2.5" fill="white"/>
-  <path d="M5,10.5 L16,20.5 L27,10.5 Z" fill="rgba(${dr},${dg},${db},0.10)" clip-path="url(#ec)"/>
-  <path d="M5,10.5 L16,20.5 L27,10.5" fill="none" stroke="rgba(${dr},${dg},${db},0.38)" stroke-width="1.4" stroke-linejoin="round" clip-path="url(#ec)"/>
-  <line x1="5" y1="25.5" x2="13" y2="20" stroke="rgba(${dr},${dg},${db},0.16)" stroke-width="1.1"/>
-  <line x1="27" y1="25.5" x2="19" y2="20" stroke="rgba(${dr},${dg},${db},0.16)" stroke-width="1.1"/>
+  <rect width="32" height="32" rx="7.5" fill="url(#glow)"/>
+  <rect x="5" y="10.2" width="22" height="14.2" rx="2.4" fill="rgba(0,43,143,0.28)"/>
+  <rect x="5" y="9.6" width="22" height="14.2" rx="2.4" fill="url(#env)"/>
+  <path d="M5 12.0 C5 10.7 6.1 9.6 7.4 9.6 L24.6 9.6 C25.9 9.6 27 10.7 27 12.0 L27 12.8 L16.6 18.4 C16.25 18.65 15.75 18.65 15.4 18.4 L5 12.8 Z" fill="#ffffff"/>
   ${badge}
 </svg>`;
 }
@@ -752,8 +729,9 @@ export function getInitialTheme() {
 // ── Effective accent (theme value, or a custom-CSS override of --accent) ───────
 
 // The accent actually in effect. A custom-CSS override of --accent wins over the
-// theme's declared value, so JS-driven chrome (favicon, PWA theme-color, the logo
-// mark) reads the *computed* value to match what var(--accent) resolves to in CSS.
+// theme's declared value, so JS-driven chrome (PWA theme-color, the logo mark)
+// reads the *computed* value to match what var(--accent) resolves to in CSS.
+// The favicon artwork is fixed brand artwork, independent of the accent.
 export function getEffectiveAccent(fallback = '#7c6af7') {
   try {
     const v = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
@@ -769,9 +747,10 @@ export function subscribeAccent(fn) {
   return () => { _accentListeners.delete(fn); };
 }
 
-// Recompute everything derived from the accent (favicon, PWA theme-color, logo)
-// from the *effective* accent. Called after both applyTheme and applyCustomCss so
-// the accent's source (preset theme or custom override) doesn't matter.
+// Recompute accent-derived chrome (PWA theme-color, logo) and reapply the fixed
+// brand favicon from the *effective* accent. Called after both applyTheme and
+// applyCustomCss so the accent's source (preset theme or custom override)
+// doesn't matter.
 function refreshAccentDerived() {
   const accent = getEffectiveAccent();
   if (!accent.startsWith('#')) return; // favicon rasteriser + meta expect a hex colour
@@ -892,7 +871,7 @@ function _rasterise(svgStr, onCanvas) {
 
 function _warmBase(accent) {
   if (_baseCanvas && _baseAccent === accent) return;
-  _rasterise(buildFaviconSvg(accent, 0), (canvas) => {
+  _rasterise(buildFaviconSvg(0), (canvas) => {
     if (_baseCanvas && _baseAccent === accent) return; // lost the race
     _baseCanvas = canvas;
     _baseAccent = accent;
@@ -906,7 +885,7 @@ function _applyFavicon(accent) {
   // on-disk file after tab focus changes.
   const isBase = _badgeCount === 0; // capture before any async gap
   const seq    = ++_renderSeq;
-  _rasterise(buildFaviconSvg(accent, _badgeCount), (canvas) => {
+  _rasterise(buildFaviconSvg(_badgeCount), (canvas) => {
     // Cache the no-badge render as the base so all future badge updates can
     // skip the async round-trip and draw synchronously via Canvas 2D.
     // Do this before the seq guard so the cache is always populated, even
