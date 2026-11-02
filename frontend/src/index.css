@@ -11,20 +11,20 @@
   --motion-slow:   260ms;
   --ease-standard:  cubic-bezier(0.2, 0, 0, 1);
   --ease-emphasized: cubic-bezier(0.2, 0.8, 0.2, 1);
-  --bg-primary: #070C16;
-  --bg-secondary: #0B1322;
-  --bg-tertiary: #0F192B;
-  --bg-elevated: #142138;
-  --bg-hover: #182742;
-  --border: #223250;
-  --border-subtle: #182338;
-  --text-primary: #EAF0FA;
-  --text-secondary: #AEBBD0;
-  --text-tertiary: #8391A8;
+  --bg-primary: #0B0B0D;
+  --bg-secondary: #111114;
+  --bg-tertiary: #17171B;
+  --bg-elevated: #1D1D22;
+  --bg-hover: #232329;
+  --border: #2C2C33;
+  --border-subtle: #232328;
+  --text-primary: #EDEDF1;
+  --text-secondary: #A9A9B4;
+  --text-tertiary: #7C7C88;
   --accent: #4C7BF0;
   --accent-text: #F7FAFF;
-  --accent-dim: #162441;
-  --accent-glow: rgba(76, 123, 240, 0.20);
+  --accent-dim: #1B233A;
+  --accent-glow: rgba(76, 123, 240, 0.16);
   --green: #4ade80;
   --red: #f87171;
   --amber: #fbbf24;
@@ -856,5 +856,5 @@ html[data-mailflow-theme="dark"] .login-card {
   box-shadow: 0 24px 70px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.045);
 }
 html[data-mailflow-theme="dark"] .login-form::before {
-  background: radial-gradient(closest-side, rgba(76,123,240,.18), transparent 72%);
+  background: radial-gradient(closest-side, rgba(76,123,240,.10), transparent 72%);
 }
